@@ -1,14 +1,22 @@
 #include <stdio.h>
 
 #include "colors.h"
+#include "settings.h"
 
-int main ()
+int main (const int argc, const char** argv)
 {
-	printf("%s%sHello, world!\n%s",
-		CBOLD,
-		FG_199,
-		CRES
-	);
+	printf("%s", CBOLD);
+
+	Settings* s = gset(argc, argv);
+
+	if (!s->error)
+	{
+		printf("input: %s\n", s->input);
+	}
+	
+	freeset(s);
+
+	printf("%s", CRES);
 
 	return 0;
 }

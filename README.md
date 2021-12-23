@@ -14,7 +14,7 @@ MD is a MakeDown file read with:
 
 - [ ] Style creator
 
-- [x] Linux support
+- [ ] Linux support
 - [x] Cygwin support
 - [ ] Windows support
 

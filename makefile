@@ -3,13 +3,16 @@ OUT = ./bin/md
 RUN = ${OUT} ./README.md
 
 
-${OUT}: ./obj/main.o 
+${OUT}: ./obj/main.o ./obj/settings.o
 	${CC} ./obj/*.o -o ${OUT}
 
 	${RUN}
 
 ./obj/main.o: ./src/main.c 
 	${CC} -c ./src/main.c -o ./obj/main.o 
+
+./obj/settings.o: ./src/settings.c 
+	${CC} -c ./src/settings.c -o ./obj/settings.o 
 
 
 run:
