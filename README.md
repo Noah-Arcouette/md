@@ -1,9 +1,9 @@
 # MD 
 
-MD is a MakeDown file read with:
-- [ ] Header styles
-- [ ] List support
-- [ ] check support
+MD is a MakeDown file reader with:
+- [x] Header styles
+- [x] List support
+- [ ] check list support
 - [ ] highlighting support I.E
 	```
 	*...*

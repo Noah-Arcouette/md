@@ -3,7 +3,7 @@ OUT = ./bin/md
 RUN = ${OUT} ./README.md
 
 
-${OUT}: ./obj/main.o ./obj/settings.o ./obj/reader.o
+${OUT}: ./obj/printer.o ./obj/main.o ./obj/settings.o ./obj/reader.o
 	${CC} ./obj/*.o -o ${OUT}
 
 	${RUN}
@@ -16,6 +16,10 @@ ${OUT}: ./obj/main.o ./obj/settings.o ./obj/reader.o
 
 ./obj/reader.o: ./src/reader.c 
 	${CC} -c ./src/reader.c -o ./obj/reader.o 
+
+./obj/printer.o: ./src/printer.c ./src/main.h
+	${CC} -c ./src/printer.c -o ./obj/printer.o 
+
 
 
 run:

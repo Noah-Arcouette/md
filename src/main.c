@@ -4,6 +4,7 @@
 #include "colors.h"
 #include "settings.h"
 #include "reader.h"
+#include "printer.h"
 
 int main (const int argc, const char** argv)
 {
@@ -17,7 +18,7 @@ int main (const int argc, const char** argv)
 
 		if (!s->error)
 		{
-			printf("%s\n", data);
+			printer(data, s);
 		}
 
 		free(data);
