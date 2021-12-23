@@ -12,6 +12,9 @@ void printer (char* data, Settings* s)
 	printf("%s%s%s", CRES, DEF_C, B_C);
 
 	int hcount = 0;
+	int in = 0;
+
+	int skip = 0;
 
 	for (int i = 0; data[i]!='\0'; i++)
 	{
@@ -20,39 +23,109 @@ void printer (char* data, Settings* s)
 		switch (j)
 		{
 			case '#':
-				if (HU)
-					printf("\x1b[4m");
-
-				printf("%s", CBOLD);
-
-				switch (hcount)
+				if (!skip)
 				{
-					case 0:
-						printf("%s", H1_C);
-						break;
-					case 1:
-						printf("%s", H2_C);
-						break;
-					default: 
-						printf("%s", H3_C);
-						break;
+					if (HU)
+						printf("\x1b[4m");
+
+					printf("%s", CBOLD);
+
+					switch (hcount)
+					{
+						case 0:
+							printf("%s", H1_C);
+							break;
+						case 1:
+							printf("%s", H2_C);
+							break;
+						default: 
+							printf("%s", H3_C);
+							break;
+					}
+
+					hcount++;
+				}
+				else
+				{
+					printf("#");
 				}
 
-				hcount++;
 				break;
 
 			case '-':
-				if (LI)
-					printf("\t");
+				if (!skip)
+				{
+					if (LI)
+						printf("\t");
 
-				printf("%s%s -", CBOLD, LIST_C);
+					printf("%s%s -", CBOLD, LIST_C);
 
-				printf("%s%s%s", CRES, DEF_C, B_C);
+					printf("%s%s%s", CRES, DEF_C, B_C);
+				}
+				else
+				{
+					printf("-");
+				}
+
+				break;
+
+			case '*':
+				if (!skip)
+				{
+					if (data[i-2] == '*')
+					{
+						printf("%s", CBOLD);
+					}
+
+					if (!in)
+						printf("\x1b[3m");
+					else
+						printf("%s%s%s", CRES, DEF_C, B_C);
+
+					in = !in;
+
+				}
+				else
+				{
+					printf("*");
+				}
+
+				break;
+
+			case '`':
+				if (data[i-2] == '`')
+				{
+					in = skip;
+
+					skip = !skip;
+				}
+
+
+				if (!in)
+				{
+					printf("%s%s`", HLB_C, HL_C);
+				}
+				else
+				{
+					printf("`%s%s%s", CRES, DEF_C, B_C);
+				}
+
+				if (skip)
+					in = 0;
+				else
+					in = !in;
+
+
 				break;
 
 			case '\n':
-				printf("%s%s%s\n", CRES, DEF_C, B_C);
-				hcount = 0;
+				if (!skip)
+				{
+					printf("%s%s%s", CRES, DEF_C, B_C);
+					hcount = 0;
+				}
+
+				printf("\n");
 
 				break;
 

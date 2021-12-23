@@ -4,17 +4,17 @@ MD is a MakeDown file reader with:
 - [x] Header styles
 - [x] List support
 - [ ] check list support
-- [ ] highlighting support I.E
-	```
-	*...*
-	***...***
-	`...`
-	```
+- [x] highlighting support I.E
+```
+	*Hello, world!*
+	`Hello, world!`
+	***Hello, world!***
+```
 - [ ] basic HTML support
 
 - [ ] Style creator
 
-- [ ] Linux support
+- [x] Linux support
 - [x] Cygwin support
 - [ ] Windows support
 
