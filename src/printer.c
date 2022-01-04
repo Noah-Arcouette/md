@@ -25,7 +25,7 @@ void printer (char* data, Settings* s)
 		switch (j)
 		{
 			case '#':
-				if (!skip && !in)
+				if (!skip)
 				{
 					if (HU)
 						printf("\x1b[4m");
@@ -55,19 +55,20 @@ void printer (char* data, Settings* s)
 				newLine = 0;
 				break;
 
+			case '>':
 			case '-':
 				if (!skip && !in && (data[i-1] == ' ' || data[i-1] == '\n'))
 				{
 					if (LI)
 						printf("\t");
 
-					printf("%s%s -", CBOLD, LIST_C);
+					printf("%s%s %c", CBOLD, LIST_C, j);
 
 					printf("%s%s%s", CRES, DEF_C, B_C);
 				}
 				else
 				{
-					printf("-");
+					printf("%c", j);
 				}
 
 				newLine = 0;
@@ -90,7 +91,7 @@ void printer (char* data, Settings* s)
 			case '*':
 				if (!skip)
 				{
-					if (data[i-2] == '*')
+					if (data[i-1] == '*')
 					{
 						printf("%s", CBOLD);
 					}
@@ -101,7 +102,6 @@ void printer (char* data, Settings* s)
 						printf("%s%s%s", CRES, DEF_C, B_C);
 
 					in = !in;
-
 				}
 				else
 				{
