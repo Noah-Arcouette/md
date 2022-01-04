@@ -5,27 +5,29 @@ pkgdesc="Simple MarkDown Reader"
 
 arch=("x86_64")
 
-depends=("gcc")
+depends=("gcc" "make")
 optdepends=()
 conflicts=()
 
 license=("MIT")
 
-giturl="https://raw.githubusercontent.com/Noah-Arcouette/md/master/src/"
+giturl="https://raw.githubusercontent.com/Noah-Arcouette/md/master/"
 
 source=(
-	"${giturl}colors.h" 
-	"${giturl}main.c"
-	"${giturl}main.h"
-	"${giturl}printer.c"
-	"${giturl}printer.h"
-	"${giturl}reader.c"
-	"${giturl}reader.h"
-	"${giturl}settings.c"
-	"${giturl}settings.h"
+	"${giturl}src/colors.h" 
+	"${giturl}src/main.c"
+	"${giturl}src/main.h"
+	"${giturl}src/printer.c"
+	"${giturl}src/printer.h"
+	"${giturl}src/reader.c"
+	"${giturl}src/reader.h"
+	"${giturl}src/settings.c"
+	"${giturl}src/settings.h"
+	"${giturl}makefile"
 )
 
 sha256sums=(
+	"SKIP"
 	"SKIP"
 	"SKIP"
 	"SKIP"
@@ -39,10 +41,13 @@ sha256sums=(
 
 package() {
 	mkdir -p "${pkgdir}/usr/bin"
-	gcc "${srcdir}/*.c" -o "${pkgdir}/md"
 
-	chown root:root "${pkgdir}/md"
-	chmod a+x "${pkgdir}/md"
+	make mk 
+	make build
+	mv ./md "${pkgdir}/usr/bin/md"
+
+	chown root:root "${pkgdir}/usr/bin/md"
+	chmod a+x "${pkgdir}/usr/bin/md"
 
 
 }

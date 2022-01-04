@@ -44,6 +44,9 @@ linux: ${OUT}
 
 	sudo cp ${OUT} /usr/bin/
 
+build: ${OUT}
+	mv ${OUT} ./md
+
 
 clean:
 	rm obj/*.o 
