@@ -25,7 +25,7 @@ source=(
 	"${giturl}settings.h"
 )
 
-sha512sums=("SKIP")
+# sha512sums=("SKIP")
 
 package() {
 	mkdir -p "${pkgdir}/usr/bin"
