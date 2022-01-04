@@ -25,7 +25,7 @@ source=(
 	"${giturl}settings.h"
 )
 
-sha512sums=(
+sha256sums=(
 	"SKIP"
 	"SKIP"
 	"SKIP"
@@ -39,7 +39,7 @@ sha512sums=(
 
 package() {
 	mkdir -p "${pkgdir}/usr/bin"
-	gcc "${srcdir}/src/*.c" -o "${pkgdir}/md"
+	gcc "${srcdir}/*.c" -o "${pkgdir}/md"
 
 	chown root:root "${pkgdir}/md"
 	chmod a+x "${pkgdir}/md"
