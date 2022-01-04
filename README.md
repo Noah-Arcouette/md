@@ -3,7 +3,7 @@
 MD is a MakeDown file reader with:
 - [x] Header styles
 - [x] List support
-- [ ] check list support
+- [x] check list support
 - [x] under lines ( `========` )
 - [x] highlighting support I.E
 ```

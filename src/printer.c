@@ -18,6 +18,8 @@ void printer (char* data, Settings* s)
 
 	int newLine = 0;
 
+	int list = 0;
+
 	for (int i = 0; data[i]!='\0'; i++)
 	{
 		char j = data[i];
@@ -133,6 +135,41 @@ void printer (char* data, Settings* s)
 					in = 0;
 				else
 					in = !in;
+
+				newLine = 0;
+				break;
+
+			case '[':
+				if (!skip)
+				{
+					printf("%s[", CLU_C);
+
+					list = 1;
+				}
+
+				newLine = 0;
+				break;
+			case ']':
+				if (list && !skip)
+				{
+					printf("%s]%s%s%s", CLU_C, CRES, DEF_C, B_C);
+				
+					list = 0;
+				}
+
+				newLine = 0;
+				break;
+
+			case 'x':
+			case 'X':
+				if (list && !skip)
+				{
+					printf("%s%c", CLC_C, j);
+				}
+				else
+				{
+					printf("%c", j);
+				}
 
 				newLine = 0;
 				break;
