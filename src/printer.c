@@ -56,7 +56,7 @@ void printer (char* data, Settings* s)
 				break;
 
 			case '-':
-				if (!skip && !in)
+				if (!skip && !in && (data[i-1] == ' ' || data[i-1] == '\n'))
 				{
 					if (LI)
 						printf("\t");
