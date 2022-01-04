@@ -1,8 +1,8 @@
 # CC = cc -Wall -Wextra -g
 CC = cc -Wall -Wextra
 OUT = ./bin/md
-# RUN = ${OUT} ./README.md
-RUN = ${OUT} ./test.md
+RUN = ${OUT} ./README.md
+# RUN = ${OUT} ./test.md
 
 
 ${OUT}: ./obj/printer.o ./obj/main.o ./obj/settings.o ./obj/reader.o
