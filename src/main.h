@@ -5,14 +5,14 @@
 
 #define ERROR_C	FG_9 // error color
 
-#define DEF_C  	FG_253 // default color
-#define B_C 		BG_0   // background color
+#define DEF_C	FG_253 // default color
+#define B_C 	BG_0   // background color
 
 #define H1_C 	FG_13 // header 1 color
 #define H2_C 	FG_14 // header 2 color
 #define H3_C 	FG_12 // header 3 color
 
-#define HU 	1 // header underline
+#define HU 	0 // header underline
 
 #define LIST_C FG_202 // list color
 #define CLC_C 	FG_12 // check list checked
