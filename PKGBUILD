@@ -11,16 +11,18 @@ conflicts=()
 
 license=("MIT")
 
+giturl="https://raw.githubusercontent.com/Noah-Arcouette/md/master/src/"
+
 source=(
-	"./src/colors.h" 
-	"./src/main.c"
-	"./src/main.h"
-	"./src/printer.c"
-	"./src/printer.h"
-	"./src/reader.c"
-	"./src/reader.h"
-	"./src/settings.c"
-	"./src/settings.h"
+	"${giturl}colors.h" 
+	"${giturl}main.c"
+	"${giturl}main.h"
+	"${giturl}printer.c"
+	"${giturl}printer.h"
+	"${giturl}reader.c"
+	"${giturl}reader.h"
+	"${giturl}settings.c"
+	"${giturl}settings.h"
 )
 
 sha512sums=("SKIP")
@@ -32,5 +34,5 @@ package() {
 	chown root:root "${pkgdir}/md"
 	chmod a+x "${pkgdir}/md"
 
-	
+
 }
