@@ -19,6 +19,7 @@ void printer (char* data, Settings* s)
 	int newLine = 0;
 
 	int list = 0;
+	int tick = 0;
 
 	for (int i = 0; data[i]!='\0'; i++)
 	{
@@ -27,7 +28,7 @@ void printer (char* data, Settings* s)
 		switch (j)
 		{
 			case '#':
-				if (!skip)
+				if (!skip && (newLine || i == 0 || hcount != 0))
 				{
 					if (HU)
 						printf("\x1b[4m");
@@ -59,7 +60,7 @@ void printer (char* data, Settings* s)
 
 			case '>':
 			case '-':
-				if (!skip && !in && (data[i-1] == ' ' || data[i-1] == '\n'))
+				if (!skip && (data[i-2] == '\n' || data[i-1] == '\n'))
 				{
 					if (LI)
 						printf("\t");
@@ -77,7 +78,7 @@ void printer (char* data, Settings* s)
 				break;
 
 			case '=':
-				if (!skip && !in && newLine)
+				if (!skip && newLine)
 				{
 					printf("%s%s=", CBOLD, UL_C);
 
@@ -116,13 +117,13 @@ void printer (char* data, Settings* s)
 			case '`':
 				if (data[i-2] == '`')
 				{
-					in = skip;
+					tick = skip;
 
 					skip = !skip;
 				}
 
 
-				if (!in)
+				if (!tick)
 				{
 					printf("%s%s`", HLB_C, HL_C);
 				}
@@ -132,9 +133,9 @@ void printer (char* data, Settings* s)
 				}
 
 				if (skip)
-					in = 0;
+					tick = 0;
 				else
-					in = !in;
+					tick = !tick;
 
 				newLine = 0;
 				break;
@@ -183,6 +184,11 @@ void printer (char* data, Settings* s)
 
 				printf("\n");
 				newLine = 1;
+
+				break;
+
+			case ' ':
+				printf(" ");
 
 				break;
 
