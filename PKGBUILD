@@ -23,11 +23,9 @@ source=(
 	"${giturl}src/reader.h"
 	"${giturl}src/settings.c"
 	"${giturl}src/settings.h"
-	"${giturl}makefile"
 )
 
 sha256sums=(
-	"SKIP"
 	"SKIP"
 	"SKIP"
 	"SKIP"
@@ -42,9 +40,7 @@ sha256sums=(
 package() {
 	mkdir -p "${pkgdir}/usr/bin"
 
-	make mk 
-	make build
-	mv ./md "${pkgdir}/usr/bin/md"
+	cc "${srcdir}/*.c" -o "${pkgdir}/usr/bin/${pkgname}"
 
 	chown root:root "${pkgdir}/usr/bin/md"
 	chmod a+x "${pkgdir}/usr/bin/md"
