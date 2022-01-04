@@ -5,6 +5,15 @@
 #include "settings.h"
 #include "main.h"
 
+size_t sizeofStr (const char* str)
+{
+	size_t size = 0;
+	for (; str[size]!='\0'; size++)
+	{}
+
+	return (size+1); // include null byte
+}
+
 Settings* gset (const int argc, const char** argv)
 {
 	Settings* s = malloc(sizeof(Settings));
@@ -33,7 +42,7 @@ Settings* gset (const int argc, const char** argv)
 		}
 		else
 		{
-			s->input = realloc(s->input, sizeof(argv[i]));
+			s->input = realloc(s->input, sizeofStr(argv[i]));
 			strcpy(s->input, argv[i]);
 		}
 	}
