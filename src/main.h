@@ -3,20 +3,22 @@
 
 #include "colors.h"
 
-#define ERROR_C	FG_9
+#define ERROR_C	FG_9 // error color
 
 #define DEF_C  	FG_253 // default color
 #define B_C 		BG_0   // background color
 
-#define H1_C 	FG_13
-#define H2_C 	FG_14
-#define H3_C 	FG_12
+#define H1_C 	FG_13 // header 1 color
+#define H2_C 	FG_14 // header 2 color
+#define H3_C 	FG_12 // header 3 color
 
 #define HU 	1 // header underline
 
-#define LIST_C FG_202
-#define CLC_C 	DEF_C // check list checked
-#define CLU_C 	DEF_C // check list unchecked
+#define LIST_C FG_202 // list color
+#define CLC_C 	DEF_C // check list checked   - not in use
+#define CLU_C 	DEF_C // check list unchecked - not in use
+
+#define UL_C LIST_C // under line color - not in use
 
 #define LI 	0 // list indent
 

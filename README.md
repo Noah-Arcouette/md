@@ -4,7 +4,7 @@ MD is a MakeDown file reader with:
 - [x] Header styles
 - [x] List support
 - [ ] check list support
-- [ ] under lights ( `========` )
+- [x] under lines ( `========` )
 - [x] highlighting support I.E
 ```
 	*Hello, world!*
@@ -17,7 +17,6 @@ MD is a MakeDown file reader with:
 
 - [x] Linux support
 - [x] Cygwin support
-- [ ] Windows support
 
 # Install
 
@@ -34,5 +33,3 @@ $ make mk
 
 $ make linux
 ```
-
-## Windows

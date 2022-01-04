@@ -27,6 +27,9 @@ char* reader (Settings* s)
 			s->input
 		);
 
+		free(line);
+		free(data);
+
 		return NULL;
 	}
 
@@ -38,8 +41,7 @@ char* reader (Settings* s)
 		strcat(data, line);
 	}
 
-	if (line)
-		free(line);
+	free(line);
 
 	fclose(fp);
 

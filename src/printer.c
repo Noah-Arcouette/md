@@ -16,6 +16,8 @@ void printer (char* data, Settings* s)
 
 	int skip = 0;
 
+	int newLine = 0;
+
 	for (int i = 0; data[i]!='\0'; i++)
 	{
 		char j = data[i];
@@ -23,7 +25,7 @@ void printer (char* data, Settings* s)
 		switch (j)
 		{
 			case '#':
-				if (!skip)
+				if (!skip && !in)
 				{
 					if (HU)
 						printf("\x1b[4m");
@@ -50,10 +52,11 @@ void printer (char* data, Settings* s)
 					printf("#");
 				}
 
+				newLine = 0;
 				break;
 
 			case '-':
-				if (!skip)
+				if (!skip && !in)
 				{
 					if (LI)
 						printf("\t");
@@ -65,6 +68,21 @@ void printer (char* data, Settings* s)
 				else
 				{
 					printf("-");
+				}
+
+				newLine = 0;
+				break;
+
+			case '=':
+				if (!skip && !in && newLine)
+				{
+					printf("%s%s=", CBOLD, UL_C);
+
+					printf("%s%s%s", CRES, DEF_C, B_C);
+				}
+				else
+				{
+					printf("=");
 				}
 
 				break;
@@ -90,6 +108,7 @@ void printer (char* data, Settings* s)
 					printf("*");
 				}
 
+				newLine = 0;
 				break;
 
 			case '`':
@@ -115,7 +134,7 @@ void printer (char* data, Settings* s)
 				else
 					in = !in;
 
-
+				newLine = 0;
 				break;
 
 			case '\n':
@@ -126,11 +145,13 @@ void printer (char* data, Settings* s)
 				}
 
 				printf("\n");
+				newLine = 1;
 
 				break;
 
 			default:
 				printf("%c", j);
+				newLine = 0;
 				break;
 		}
 	}
