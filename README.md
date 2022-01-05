@@ -45,10 +45,11 @@ Other - Git
 
 # Install
 
-***I would suggest using strip on it ( not needed if downloading from the AUR )***
+***I would suggest using `strip -s` on it ( not needed if downloading from the AUR )***
+
+***Strip with `sudo strip -s /usr/bin/md` after installation***
 
 Binary is placed in `/usr/bin/`
-
 
 ## Cygwin
 ```
