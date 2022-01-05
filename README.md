@@ -45,12 +45,18 @@ Other - Git
 
 # Install
 
+***I would suggest using strip on it ( not needed to if downloading from the AUR )***
+
+Binary is placed in `/usr/bin/`
+
+
 ## Cygwin
 ```
 $ make mk
 
 $ make cyg
 ```
+
 
 ## Linux
 ```

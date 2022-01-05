@@ -2,7 +2,6 @@
 CC = cc -Wall -Wextra
 OUT = ./bin/md
 RUN = ${OUT} ./README.md
-# RUN = ${OUT} ./test.md
 DEBUG = ${OUT} ./doc/Styles.md
 
 
@@ -39,9 +38,6 @@ linux: ${OUT}
 	sudo chmod a+x ${OUT}
 
 	sudo cp ${OUT} /usr/bin/
-
-build: ${OUT}
-	mv ${OUT} ./md
 
 debug: ${OUT}
 	${DEBUG}
