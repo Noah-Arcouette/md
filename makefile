@@ -22,9 +22,6 @@ ${OUT}: ./obj/printer.o ./obj/main.o ./obj/settings.o ./obj/reader.o
 ./obj/printer.o: ./src/printer.c ./src/main.h
 	${CC} -c ./src/printer.c -o ./obj/printer.o 
 
-debug:
-	${CC} -o ${OUT} ./src/*.c -g
-
 
 run:
 	${RUN}

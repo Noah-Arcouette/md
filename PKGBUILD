@@ -5,7 +5,7 @@ pkgdesc="Simple MarkDown Reader"
 
 arch=("x86_64")
 
-depends=("gcc" "make")
+depends=("gcc")
 optdepends=()
 conflicts=()
 
