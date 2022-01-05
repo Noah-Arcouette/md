@@ -24,7 +24,9 @@ MD is a MakeDown file reader with:
 ## Required 
 
 [Git](https://git-scm.com/)
+
 [GNU Make](https://www.gnu.org/software/make/)
+
 [GCC](https://gcc.gnu.org/)
 
 ## Windows
@@ -35,7 +37,9 @@ MD is a MakeDown file reader with:
 ## Linux
 
 [Ubuntu](https://ubuntu.com/) - Git
+
 [Arch](https://archlinux.org/) - AUR or Git
+
 Other - Git
 
 
