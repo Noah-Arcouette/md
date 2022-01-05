@@ -26,7 +26,7 @@ sha256sums=(
 
 
 pkgver () {
-	cd "${_pkgname}"
+	cd "md"
 	printf "${pkgver}.r%s%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
