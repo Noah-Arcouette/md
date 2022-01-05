@@ -63,4 +63,4 @@ $ make linux
 
 [MD](https://aur.archlinux.org/packages/md-git/) also is in the AUR at https://aur.archlinux.org/packages/md-git/
 
-I would recommend using [trizen](https://github.com/trizen/trizen)
+I would recommend using [trizen](https://github.com/trizen/trizen) to download
