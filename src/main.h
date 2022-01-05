@@ -16,7 +16,7 @@
 
 #define LIST_C FG_202 // list color
 #define CLC_C 	FG_12 // check list checked
-#define CLU_C 	FG_14 // check list unchecked - not in use
+#define CLU_C 	FG_14 // check list unchecked
 
 #define UL_C LIST_C // under line color
 

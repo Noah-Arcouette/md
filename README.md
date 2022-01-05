@@ -1,5 +1,7 @@
 # MD 
 
+***Warning! do not use the PKGBUILD it is not done yet***
+
 MD is a MakeDown file reader with:
 - [x] Header styles
 - [x] List support

@@ -1,51 +1,48 @@
-pkgname="md"
-pkgver="1.0.9"
+pkgname="md-git"
+pkgver="1.9"
 pkgrel="1"
 pkgdesc="Simple MarkDown Reader"
 
-arch=("x86_64")
+arch=("x86_64" "i686")
 
-depends=("gcc")
-optdepends=()
-conflicts=()
+makedepends=("git")
+depends=("gcc" "make")
 
 license=("MIT")
+
+url="https://github.com/Noah-Arcouette/md.git"
+
+provides=("md")
 
 giturl="https://raw.githubusercontent.com/Noah-Arcouette/md/master/"
 
 source=(
-	"${giturl}src/colors.h" 
-	"${giturl}src/main.c"
-	"${giturl}src/main.h"
-	"${giturl}src/printer.c"
-	"${giturl}src/printer.h"
-	"${giturl}src/reader.c"
-	"${giturl}src/reader.h"
-	"${giturl}src/settings.c"
-	"${giturl}src/settings.h"
+	"git+${url}"
 )
 
 sha256sums=(
 	"SKIP"
-	"SKIP"
-	"SKIP"
-	"SKIP"
-	"SKIP"
-	"SKIP"
-	"SKIP"
-	"SKIP"
-	"SKIP"
 )
 
+
+pkgver () {
+	cd "${_pkgname}"
+	printf "${pkgver}.r%s%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+build () {
+	cd "md"
+
+	make mk
+	make 
+}
+
 package() {
-	mkdir -p "${pkgdir}/usr/bin"
+	cd "md"
+	mkdir -p "${pkgdir}/usr/bin/"
 
-	files=" ${srcdir}/main.c ${srcdir}/printer.c ${srcdir}/reader.c ${srcdir}/settings.c"
-	
-	cc ${files} -o "${pkgdir}/usr/bin/${pkgname}"
+	chown root:root ${srcdir}/bin/md
+	chmod a+x ${srcdir}/bin/md
 
-	chown root:root "${pkgdir}/usr/bin/md"
-	chmod a+x "${pkgdir}/usr/bin/md"
-
-
+	mv "${srcdir}/bin/md" "${pkgdir}/usr/bin"
 }
