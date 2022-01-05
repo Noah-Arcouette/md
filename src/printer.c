@@ -22,6 +22,8 @@
 
 #include "main.h"
 
+size_t sizeofStr (const char*);
+
 void printer (char* data, Settings* s)
 {
 	printf("%s%s%s", CRES, DEF_C, B_C);
@@ -35,6 +37,13 @@ void printer (char* data, Settings* s)
 
 	int list = 0;
 	int tick = 0;
+	int stop = 0;
+
+	char* currentFG = malloc(sizeofStr(DEF_C) * sizeof(char));
+	strcpy(currentFG, DEF_C);
+
+	char* currentBG = malloc(sizeofStr(B_C) * sizeof(char));
+	strcpy(currentBG, B_C);
 
 	for (int i = 0; data[i]!='\0'; i++)
 	{
@@ -43,7 +52,7 @@ void printer (char* data, Settings* s)
 		switch (j)
 		{
 			case '#':
-				if (!skip && (newLine || i == 0 || hcount != 0))
+				if (!stop && !skip && (newLine || i == 0 || hcount != 0))
 				{
 					if (HU)
 						printf("\x1b[4m");
@@ -75,7 +84,7 @@ void printer (char* data, Settings* s)
 
 			case '>':
 			case '-':
-				if (!skip && (data[i-2] == '\n' || data[i-1] == '\n'))
+				if (!stop && !skip && (data[i-2] == '\n' || data[i-1] == '\n'))
 				{
 					if (LI)
 						printf("\t");
@@ -93,7 +102,7 @@ void printer (char* data, Settings* s)
 				break;
 
 			case '=':
-				if (!skip && newLine)
+				if (!stop && !skip && newLine)
 				{
 					printf("%s%s=", CBOLD, UL_C);
 
@@ -107,7 +116,7 @@ void printer (char* data, Settings* s)
 				break;
 
 			case '*':
-				if (!skip)
+				if (!stop && !skip)
 				{
 					if (data[i-1] == '*')
 					{
@@ -136,9 +145,27 @@ void printer (char* data, Settings* s)
 				if (data[i-2] == '`')
 				{
 					tick = skip;
-
 					skip = !skip;
+
+					if (skip)
+					{
+						currentFG = realloc(currentFG, sizeofStr(HL_C) * sizeof(char));
+						currentBG = realloc(currentBG, sizeofStr(HLB_C) * sizeof(char));
+					
+						strcpy(currentFG, HL_C);
+						strcpy(currentBG, HLB_C);
+					}
+					else
+					{
+						currentFG = realloc(currentFG, sizeofStr(DEF_C) * sizeof(char));
+						currentBG = realloc(currentBG, sizeofStr(B_C) * sizeof(char));
+					
+						strcpy(currentFG, DEF_C);
+						strcpy(currentBG, B_C);
+					}
 				}
+
+				stop = !stop;
 
 
 				if (!tick)
@@ -159,29 +186,33 @@ void printer (char* data, Settings* s)
 				break;
 
 			case '[':
-				if (!skip)
+				if (!stop && !skip)
 				{
 					printf("%s[", CLU_C);
 
 					list = 1;
 				}
+				else
+					printf("[");
 
 				newLine = 0;
 				break;
 			case ']':
-				if (list && !skip)
+				if (!stop && list && !skip)
 				{
 					printf("%s]%s%s%s", CLU_C, CRES, DEF_C, B_C);
 				
 					list = 0;
 				}
+				else
+					printf("]");
 
 				newLine = 0;
 				break;
 
 			case 'x':
 			case 'X':
-				if (list && !skip)
+				if (!stop && list && !skip)
 				{
 					printf("%s%c", CLC_C, j);
 				}
@@ -196,11 +227,10 @@ void printer (char* data, Settings* s)
 			case '\n':
 				if (!skip)
 				{
-					printf("%s%s%s", CRES, DEF_C, B_C);
 					hcount = 0;
 				}
 
-				printf("\n");
+				printf("\n%s%s%s", CRES, currentFG, currentBG);
 				newLine = 1;
 
 				break;
@@ -216,4 +246,7 @@ void printer (char* data, Settings* s)
 				break;
 		}
 	}
+
+	free(currentBG);
+	free(currentFG);
 }

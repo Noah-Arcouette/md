@@ -3,12 +3,11 @@ CC = cc -Wall -Wextra
 OUT = ./bin/md
 RUN = ${OUT} ./README.md
 # RUN = ${OUT} ./test.md
+DEBUG = ${OUT} ./doc/Styles.md
 
 
 ${OUT}: ./obj/printer.o ./obj/main.o ./obj/settings.o ./obj/reader.o
 	${CC} ./obj/*.o -o ${OUT}
-
-	${RUN}
 
 ./obj/main.o: ./src/main.c 
 	${CC} -c ./src/main.c -o ./obj/main.o 
@@ -43,6 +42,9 @@ linux: ${OUT}
 
 build: ${OUT}
 	mv ${OUT} ./md
+
+debug: ${OUT}
+	${DEBUG}
 
 
 clean:
