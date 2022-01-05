@@ -38,7 +38,8 @@
 #define LI 	0 // list indent
 
 #define HLB_C 	 BG_239 // highlight background color
-#define HL_C 	 DEF_C  // highlight foreground color
+#define HL_C 	 FG_10  // highlight foreground color
 
+#define I 	0 // italicize
 
 #endif // __MAIN_H__

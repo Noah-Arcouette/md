@@ -18,6 +18,27 @@ MD is a MakeDown file reader with:
 - [x] Linux support
 - [x] Cygwin support
 
+
+# Compatibility
+
+## Required 
+
+[Git](https://git-scm.com/)
+[GNU Make](https://www.gnu.org/software/make/)
+[GCC](https://gcc.gnu.org/)
+
+## Windows
+
+[Cygwin](https://www.cygwin.com/) - Git
+
+
+## Linux
+
+[Ubuntu](https://ubuntu.com/) - Git
+[Arch](https://archlinux.org/) - AUR or Git
+Other - Git
+
+
 # Install
 
 ## Cygwin

@@ -115,7 +115,10 @@ void printer (char* data, Settings* s)
 					}
 
 					if (!in)
-						printf("\x1b[3m");
+					{
+						if (I)
+							printf("\x1b[3m");
+					}
 					else
 						printf("%s%s%s", CRES, DEF_C, B_C);
 
