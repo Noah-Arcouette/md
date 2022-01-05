@@ -1,3 +1,18 @@
+/*
+	      _____           ___
+	     /  _  \         /  /
+	    /  / \  \       /  /
+	   /  /___\  \     /  /
+	  /  ______\  \   /  /
+	 /  /       \  \_/  /
+	/__/         \_____/
+
+
+	This file was made for a Noah Arcouette product.
+	https://github.com/Noah-Arcouette
+
+*/
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
