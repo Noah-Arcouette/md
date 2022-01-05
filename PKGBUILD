@@ -40,13 +40,8 @@ sha256sums=(
 package() {
 	mkdir -p "${pkgdir}/usr/bin"
 
-	files=(
-		"${srcdir}/main.c"
-		"${srcdir}/printer.c"
-		"${srcdir}/reader.c"
-		"${srcdir}/settings.c"
-	)
-
+	files=" ${srcdir}/main.c ${srcdir}/printer.c ${srcdir}/reader.c ${srcdir}/settings.c"
+	
 	cc ${files} -o "${pkgdir}/usr/bin/${pkgname}"
 
 	chown root:root "${pkgdir}/usr/bin/md"
