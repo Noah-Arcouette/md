@@ -41,8 +41,8 @@ package() {
 	cd "md"
 	mkdir -p "${pkgdir}/usr/bin/"
 
-	chown root:root ${srcdir}/bin/md
-	chmod a+x ${srcdir}/bin/md
+	chown root:root ${srcdir}/md/bin/md
+	chmod a+x ${srcdir}/md/bin/md
 
-	mv "${srcdir}/bin/md" "${pkgdir}/usr/bin"
+	mv "${srcdir}/md/bin/md" "${pkgdir}/usr/bin"
 }
