@@ -37,12 +37,22 @@ Settings* gset (const int argc, const char** argv)
 	s->input = malloc(1 * sizeof(char));
 	strcpy(s->input, "");
 
+	char* self = malloc((sizeofStr(argv[0]) + sizeof(" /usr/doc/md/CommandLine.md")) * sizeof(char));
+	strcpy(self, argv[0]);
+	strcat(self, " /usr/doc/md/CommandLine.md");
+
 	for (int i = 1; i<argc; i++)
 	{
 		if (argv[i][0] == '-')
 		{
 			switch (argv[i][1])
 			{
+				case 'h':
+					s->error = 1;
+
+					system(self);
+					break;
+
 				default:
 					s->error = 1;
 

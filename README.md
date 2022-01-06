@@ -21,7 +21,7 @@ MD is a MakeDown file reader with:
 
 # Compatibility
 
-## Required 
+## Required To Make ( Can be uninstalled after )
 
 [Git](https://git-scm.com/)
 

@@ -31,11 +31,17 @@ mk:
 cyg: ${OUT}
 	chmod a+x ${OUT}
 
+	mkdir -p "/usr/doc/md/"
+	cp ./doc/CommandLine.md /usr/doc/md/CommandLine.md
+
 	cp ${OUT} /usr/bin/
 
 linux: ${OUT}
 	sudo chown root:root ${OUT}
 	sudo chmod a+x ${OUT}
+
+	sudo mkdir -p "/usr/doc/md/"
+	sudo cp ./doc/CommandLine.md /usr/doc/md/CommandLine.md
 
 	sudo cp ${OUT} /usr/bin/
 
