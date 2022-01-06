@@ -71,3 +71,21 @@ $ make linux
 [MD](https://aur.archlinux.org/packages/md-git/) also is in the AUR at https://aur.archlinux.org/packages/md-git/
 
 I would recommend using [trizen](https://github.com/trizen/trizen) to download
+
+# Tests
+
+Test commands installed with
+
+```
+$ md -f
+```
+
+It should display something that looks like a face.
+
+
+Test if application works
+
+```
+$ md -h
+```
+Should display the help message
