@@ -53,6 +53,12 @@ Settings* gset (const int argc, const char** argv)
 					system(self);
 					break;
 
+				case 'f':
+					s->error = 1;
+
+					system("cat /usr/doc/md/face");
+					break;
+
 				default:
 					s->error = 1;
 

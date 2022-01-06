@@ -9,4 +9,9 @@ Input file you want to open
 
 ### -h
 
-Display help message
+Displays help message
+
+
+### -f
+
+Displays a face...

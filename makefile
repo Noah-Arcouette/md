@@ -33,6 +33,7 @@ cyg: ${OUT}
 
 	mkdir -p "/usr/doc/md/"
 	cp ./doc/CommandLine.md /usr/doc/md/CommandLine.md
+	cp ./face /usr/doc/md/face
 
 	cp ${OUT} /usr/bin/
 
@@ -42,6 +43,7 @@ linux: ${OUT}
 
 	sudo mkdir -p "/usr/doc/md/"
 	sudo cp ./doc/CommandLine.md /usr/doc/md/CommandLine.md
+	sudo cp ./face /usr/doc/md/face
 
 	sudo cp ${OUT} /usr/bin/
 
