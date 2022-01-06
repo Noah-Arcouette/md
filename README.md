@@ -45,7 +45,7 @@ Other - Git
 
 # Install
 
-***I would suggest using `strip -s` on it ( not needed if downloading from the AUR )***
+***I suggest using `strip -s` on it ( not needed if downloading from the AUR )***
 
 ***Strip with `sudo strip -s /usr/bin/md` after installation***
 
