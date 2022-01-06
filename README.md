@@ -74,7 +74,7 @@ I would recommend using [trizen](https://github.com/trizen/trizen) to download
 
 # Tests
 
-Test commands installed with
+Test that the command is installed with
 
 ```
 $ md -f
@@ -88,4 +88,5 @@ Test if application works
 ```
 $ md -h
 ```
-Should display the help message
+
+Should display the help message.
