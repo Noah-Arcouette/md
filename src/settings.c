@@ -20,15 +20,6 @@
 #include "settings.h"
 #include "main.h"
 
-size_t sizeofStr (const char* str)
-{
-	size_t size = 0;
-	for (; str[size]!='\0'; size++)
-	{}
-
-	return (size+1); // include null byte
-}
-
 Settings* gset (const int argc, const char** argv)
 {
 	Settings* s = malloc(sizeof(Settings));
@@ -37,7 +28,7 @@ Settings* gset (const int argc, const char** argv)
 	s->input = malloc(1 * sizeof(char));
 	strcpy(s->input, "");
 
-	char* self = malloc((sizeofStr(argv[0]) + sizeof(" /usr/doc/md/CommandLine.md")) * sizeof(char));
+	char* self = malloc((strlen(argv[0])+1 + sizeof(" /usr/doc/md/CommandLine.md")) * sizeof(char));
 	strcpy(self, argv[0]);
 	strcat(self, " /usr/doc/md/CommandLine.md");
 
@@ -73,7 +64,7 @@ Settings* gset (const int argc, const char** argv)
 		}
 		else
 		{
-			s->input = realloc(s->input, sizeofStr(argv[i]));
+			s->input = realloc(s->input, strlen(argv[i])+1);
 			strcpy(s->input, argv[i]);
 		}
 	}
