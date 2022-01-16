@@ -15,7 +15,6 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include <unistd.h>
 
 #include "colors.h"
 #include "settings.h"
@@ -24,6 +23,10 @@
 
 int main (const int argc, const char** argv)
 {
+	#ifdef _WIN32
+		system("color");
+	#endif
+
 	printf("%s", CBOLD);
 
 	Settings* s = gset(argc, argv);

@@ -20,6 +20,12 @@
 #include "settings.h"
 #include "main.h"
 
+#ifdef _WIN32
+#	define HELP " C:\\ProgramData\\md\\CommandLine.md"
+#else
+#	define HELP " /usr/doc/md/CommandLine.md"
+#endif
+
 Settings* gset (const int argc, const char** argv)
 {
 	Settings* s = malloc(sizeof(Settings));
@@ -28,9 +34,9 @@ Settings* gset (const int argc, const char** argv)
 	s->input = malloc(1 * sizeof(char));
 	strcpy(s->input, "");
 
-	char* self = malloc((strlen(argv[0])+1 + sizeof(" /usr/doc/md/CommandLine.md")) * sizeof(char));
+	char* self = malloc((strlen(argv[0])+1 + sizeof(HELP)) * sizeof(char));
 	strcpy(self, argv[0]);
-	strcat(self, " /usr/doc/md/CommandLine.md");
+	strcat(self, HELP);
 
 	for (int i = 1; i<argc; i++)
 	{
@@ -47,7 +53,11 @@ Settings* gset (const int argc, const char** argv)
 				case 'f':
 					s->error = 1;
 
-					system("cat /usr/doc/md/face");
+					#ifdef _WIN32
+						system("type C:\\ProgramData\\md\\face");
+					#else
+						system("cat /usr/doc/md/face");
+					#endif
 					break;
 
 				default:

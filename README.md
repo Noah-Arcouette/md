@@ -25,14 +25,14 @@ MD is a MakeDown file reader with:
 
 [Git](https://git-scm.com/)
 
-[GNU Make](https://www.gnu.org/software/make/)
+[GNU Make](https://www.gnu.org/software/make/) - Not for Windows Native
 
 [GCC](https://gcc.gnu.org/)
 
 ## Windows
 
 [Cygwin](https://www.cygwin.com/) - Git
-
+Native - Git
 
 ## Linux
 
@@ -58,6 +58,16 @@ $ make mk
 $ make cyg
 ```
 
+## Windows
+
+```
+> xcopy /S /I .\doc\ "C:\ProgramData\md"
+> xcopy /S /-I .\face "C:\ProgramData\md\face"
+
+> gcc .\src\*.c -o .\bin\md
+```
+
+output file in `.\bin\md` move it to were ever you want
 
 ## Linux
 ```
