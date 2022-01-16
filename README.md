@@ -68,7 +68,7 @@ $ make cyg
 > gcc .\src\*.c -o .\bin\md
 ```
 
-output file in `.\bin\md` move it to were ever you want
+output file in `.\bin\md.exe` move it to were ever you want
 
 ## Linux
 ```
