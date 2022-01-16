@@ -62,6 +62,8 @@ $ make cyg
 ## Windows
 
 ```
+> mkdir .\bin
+
 > xcopy /S /I .\doc\ "C:\ProgramData\md"
 > xcopy /S /-I .\face "C:\ProgramData\md\face"
 
