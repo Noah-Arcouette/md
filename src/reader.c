@@ -23,7 +23,7 @@
 
 char* reader (Settings* s)
 {
-	size_t datasz = 1;
+	register size_t datasz = 1;
 	char* data = malloc(datasz * sizeof(char));
 	data[0] = 0;
 

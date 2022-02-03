@@ -30,13 +30,15 @@
 #define LIST 		0b10000
 #define STOP 		0b100000
 
+#define C data[i]
+
 void printer (char* data, Settings* s)
 {
 	printf("%s%s%s", CRES, DEF_C, B_C);
 
-	uint8_t flags = 0x00;
+	register uint8_t flags = 0x00;
 
-	uint8_t hcount = 0;
+	register uint8_t hcount = 0;
 
 	char* currentFG = malloc(strlen(DEF_C)+1 * sizeof(char));
 	strcpy(currentFG, DEF_C);
@@ -46,9 +48,7 @@ void printer (char* data, Settings* s)
 
 	for (int i = 0; data[i]!='\0'; i++)
 	{
-		char j = data[i];
-
-		switch (j)
+		switch (C)
 		{
 			case '#':
 				if (
@@ -108,7 +108,7 @@ void printer (char* data, Settings* s)
 					printf("%s%s %c%s%s%s", 
 						CBOLD, 
 						LIST_C, 
-						j,
+						C,
 						CRES,
 						B_C, 
 						DEF_C
@@ -256,7 +256,7 @@ void printer (char* data, Settings* s)
 					!(flags & SKIP)
 				)
 				{
-					printf("%s%c", CLC_C, j);
+					printf("%s%c", CLC_C, C);
 
 					break;
 				}
@@ -281,7 +281,7 @@ void printer (char* data, Settings* s)
 				flags &= ~NEWLINE;
 
 				dump:
-					printf("%c", j);
+					printf("%c", C);
 					break;
 		}
 	}
