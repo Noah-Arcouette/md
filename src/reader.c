@@ -25,10 +25,10 @@ char* reader (Settings* s)
 {
 	size_t datasz = 1;
 	char* data = malloc(datasz * sizeof(char));
-	strcpy(data, "");
+	data[0] = 0;
 
 	char* line = NULL;
-	size_t len = 0;
+	size_t len;
 
 	FILE* fp = fopen(s->input, "r");
 

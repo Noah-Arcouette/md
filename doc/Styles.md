@@ -3,7 +3,6 @@
 ***Use bash 256 [color codes](https://raw.githubusercontent.com/seedform/color256/master/20160221144140.png)***
 
 
-
 # ERROR_C
 
 Color of error messages
@@ -26,7 +25,7 @@ Header 1-3 colors
 
 # HU
 
-Header Underline 0: false  1: true
+Header Underline define for true / don't define for false
 
 
 # LIST_C
@@ -54,7 +53,7 @@ underline
 
 # LI
 
-Weather a list item will be indented 0: false  1: true
+Weather a list item will be indented define for true / don't define for false
 
 
 # HLB_C
@@ -69,7 +68,7 @@ Highlight text color
 
 # I
 
-Italicize on 
+Italicize on define for true / don't define for false
 ```
 *italicize*
 ***italicize***

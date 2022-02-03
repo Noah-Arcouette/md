@@ -23,12 +23,12 @@
 
 #include "main.h"
 
-#define IN   		0x01
-#define SKIP 		0x02
-#define NEWLINE 	0x04
-#define TICK 		0x08
-#define LIST 		0x10
-#define STOP 		0x20
+#define IN   		0b1
+#define SKIP 		0b10
+#define NEWLINE 	0b100
+#define TICK 		0b1000
+#define LIST 		0b10000
+#define STOP 		0b100000
 
 void printer (char* data, Settings* s)
 {
@@ -60,36 +60,39 @@ void printer (char* data, Settings* s)
 						hcount != 0
 					))
 				{
-					if (HU)
-						puts("\x1b[4m");
+					#ifdef HU
+						printf("\x1b[4m");
+					#endif
 
-					puts(CBOLD);
+					printf(CBOLD);
 
 					switch (hcount)
 					{
 						case 0:
-							printf("%s", H1_C);
+							printf(H1_C);
 							break;
 						case 1:
-							printf("%s", H2_C);
+							printf(H2_C);
 							break;
 						default: 
-							printf("%s", H3_C);
+							printf(H3_C);
 							break;
 					}
 
 					hcount++;
-				}
-				else
-				{
-					printf("#");
+
+					flags &= ~NEWLINE;
+
+					break;
 				}
 
-				flags = (flags & ~NEWLINE);
-				break;
+				flags &= ~NEWLINE;
+				goto dump;
 
 			case '>':
 			case '-':
+				flags &= ~NEWLINE;
+
 				if (
 					!(flags & STOP) && 
 					!(flags & SKIP) && 
@@ -98,8 +101,9 @@ void printer (char* data, Settings* s)
 						data[i-1] == '\n'
 					))
 				{
-					if (LI)
+					#ifdef LI
 						printf("\t");
+					#endif
 
 					printf("%s%s %c%s%s%s", 
 						CBOLD, 
@@ -109,14 +113,11 @@ void printer (char* data, Settings* s)
 						B_C, 
 						DEF_C
 					);
-				}
-				else
-				{
-					printf("%c", j);
+
+					break;
 				}
 
-				flags = (flags & ~NEWLINE);
-				break;
+				goto dump;
 
 			case '=':
 				if (
@@ -125,18 +126,22 @@ void printer (char* data, Settings* s)
 					(flags & NEWLINE)
 				)
 				{
-					printf("%s%s=", CBOLD, UL_C);
+					printf("%s%s=%s%s%s", 
+						CBOLD, 
+						UL_C, 
+						CRES,
+						DEF_C, 
+						B_C
+					);
 
-					printf("%s%s%s", CRES, DEF_C, B_C);
-				}
-				else
-				{
-					printf("=");
+					break;
 				}
 
-				break;
+				goto dump;
 
 			case '*':
+				flags &= ~NEWLINE;
+
 				if (
 					!(flags & STOP) && 
 					!(flags & SKIP)
@@ -144,32 +149,30 @@ void printer (char* data, Settings* s)
 				{
 					if (data[i-1] == '*')
 					{
-						printf("%s", CBOLD);
+						printf(CBOLD);
 					}
 
 					if (!(flags & IN))
 					{
-						if (I)
+						#ifdef I
 							printf("\x1b[3m");
+						#endif
 					}
 					else
 						printf("%s%s%s", CRES, DEF_C, B_C);
 
-					flags = (flags ^ IN);
-				}
-				else
-				{
-					printf("*");
+					flags ^= IN;
+
+					break;
 				}
 
-				flags = (flags & ~NEWLINE);
-				break;
+				goto dump;
 
 			case '`':
 				if (data[i-2] == '`')
 				{
-					flags = (flags | (TICK * ((flags & SKIP) > 0)));
-					flags = (flags ^ SKIP);
+					flags |= (TICK * ((flags & SKIP) > 0));
+					flags ^= SKIP;
 
 					if ((flags & SKIP))
 					{
@@ -189,7 +192,7 @@ void printer (char* data, Settings* s)
 					}
 				}
 
-				flags = (flags ^ STOP);
+				flags ^= STOP;
 
 
 				if (!(flags & TICK))
@@ -202,14 +205,16 @@ void printer (char* data, Settings* s)
 				}
 
 				if (flags & SKIP)
-					flags = (flags & ~TICK);
+					flags &= ~TICK;
 				else
-					flags = (flags ^ TICK);
+					flags ^= TICK;
 
-				flags = (flags & ~NEWLINE);
+				flags &= ~NEWLINE;
 				break;
 
 			case '[':
+				flags &= ~NEWLINE;
+
 				if (
 					!(flags & STOP) && 
 					!(flags & SKIP)
@@ -217,14 +222,15 @@ void printer (char* data, Settings* s)
 				{
 					printf("%s[", CLU_C);
 
-					flags = (flags | LIST);
-				}
-				else
-					printf("[");
+					flags |= LIST;
 
-				flags = (flags & ~NEWLINE);
-				break;
+					break;
+				}
+					
+				goto dump;
 			case ']':
+				flags &= ~NEWLINE;
+
 				if (
 					!(flags & STOP) && 
 					(flags & LIST) && 
@@ -233,16 +239,17 @@ void printer (char* data, Settings* s)
 				{
 					printf("%s]%s%s%s", CLU_C, CRES, DEF_C, B_C);
 				
-					flags = (flags & ~LIST);
-				}
-				else
-					printf("]");
+					flags &= ~LIST;
 
-				flags = (flags & ~NEWLINE);
-				break;
+					break;
+				}
+
+				goto dump;
 
 			case 'x':
 			case 'X':
+				flags &= ~NEWLINE;
+
 				if (
 					!(flags & STOP) && 
 					(flags & LIST) && 
@@ -250,14 +257,11 @@ void printer (char* data, Settings* s)
 				)
 				{
 					printf("%s%c", CLC_C, j);
-				}
-				else
-				{
-					printf("%c", j);
+
+					break;
 				}
 
-				flags = (flags & ~NEWLINE);
-				break;
+				goto dump;
 
 			case '\n':
 				if (!(flags & SKIP))
@@ -266,19 +270,19 @@ void printer (char* data, Settings* s)
 				}
 
 				printf("\n%s%s%s", CRES, currentFG, currentBG);
-				flags = (flags | NEWLINE);
+				flags |= NEWLINE;
 
 				break;
 
 			case ' ':
-				printf(" ");
-
-				break;
+				goto dump;
 
 			default:
-				printf("%c", j);
-				flags = (flags & ~NEWLINE);
-				break;
+				flags &= ~NEWLINE;
+
+				dump:
+					printf("%c", j);
+					break;
 		}
 	}
 

@@ -41,7 +41,8 @@ int main (const int argc, const char** argv)
 		free(data);
 	}
 
-	freeset(s);
+	free(s->input);
+	free(s);
 
 	printf("%s", CRES);
 

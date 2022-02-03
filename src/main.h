@@ -27,7 +27,7 @@
 #define H2_C 	FG_14 // header 2 color
 #define H3_C 	FG_12 // header 3 color
 
-#define HU 	0 // header underline
+// #define HU // header underline
 
 #define LIST_C FG_202 // list color
 #define CLC_C 	FG_12 // check list checked
@@ -35,11 +35,11 @@
 
 #define UL_C LIST_C // under line color
 
-#define LI 	0 // list indent
+// #define LI // list indent
 
 #define HLB_C 	 BG_239 // highlight background color
 #define HL_C 	 FG_10  // highlight foreground color
 
-#define I 	0 // italicize
+// #define I // italicize
 
 #endif // __MAIN_H__

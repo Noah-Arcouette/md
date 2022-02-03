@@ -32,9 +32,9 @@ Settings* gset (const int argc, const char** argv)
 	s->error = 0;
 
 	s->input = malloc(1 * sizeof(char));
-	strcpy(s->input, "");
+	s->input[0] = 0;
 
-	char* self = malloc((strlen(argv[0])+1 + sizeof(HELP)) * sizeof(char));
+	char* self = malloc((strlen(argv[0])+1 + strlen(HELP)) * sizeof(char));
 	strcpy(self, argv[0]);
 	strcat(self, HELP);
 
@@ -80,11 +80,7 @@ Settings* gset (const int argc, const char** argv)
 		}
 	}
 
-	return s;
-}
+	free(self);
 
-void freeset (Settings* s)
-{
-	free(s->input);
-	free(s);
+	return s;
 }

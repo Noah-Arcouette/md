@@ -25,6 +25,5 @@ typedef struct
 // get settings
 
 Settings* gset (const int, const char**);
-void freeset 	(Settings*);
 
 #endif // __SETTINGS_H__
