@@ -16,14 +16,15 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+#include <stdint.h>
 
 #include "settings.h"
 #include "main.h"
 
 #ifdef _WIN32
-#	define HELP " C:\\ProgramData\\md\\CommandLine.md"
+#	define HELP "C:\\ProgramData\\md\\CommandLine.md"
 #else
-#	define HELP " /usr/doc/md/CommandLine.md"
+#	define HELP "/usr/doc/md/CommandLine.md"
 #endif
 
 Settings* gset (const int argc, const char** argv)
@@ -34,24 +35,26 @@ Settings* gset (const int argc, const char** argv)
 	s->input = malloc(1 * sizeof(char));
 	s->input[0] = 0;
 
-	char* self = malloc((strlen(argv[0])+1 + strlen(HELP)) * sizeof(char));
-	strcpy(self, argv[0]);
-	strcat(self, HELP);
+	register uint8_t kill = 0;
 
-	for (int i = 1; i<argc; i++)
+	for (int i = 1; (i<argc && !kill); i++)
 	{
 		if (argv[i][0] == '-')
 		{
 			switch (argv[i][1])
 			{
 				case 'h':
-					s->error = 1;
+					s->input = realloc(s->input, strlen(HELP)+1);
+					strcpy(s->input, HELP);
 
-					system(self);
+					kill = 1;
+
 					break;
 
 				case 'f':
 					s->error = 1;
+
+					kill = 1;
 
 					#ifdef _WIN32
 						system("type C:\\ProgramData\\md\\face");
@@ -62,6 +65,8 @@ Settings* gset (const int argc, const char** argv)
 
 				default:
 					s->error = 1;
+
+					kill = 1;
 
 					printf("%s%sError: %sUnknown option `%s'.\n",
 						CBOLD,
@@ -79,8 +84,6 @@ Settings* gset (const int argc, const char** argv)
 			strcpy(s->input, argv[i]);
 		}
 	}
-
-	free(self);
 
 	return s;
 }
