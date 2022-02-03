@@ -63,7 +63,8 @@ Settings* gset (const int argc, const char** argv)
 				default:
 					s->error = 1;
 
-					printf("%sError: %sUnknown option `%s'.\n",
+					printf("%s%sError: %sUnknown option `%s'.\n",
+						CBOLD,
 						ERROR_C,
 						DEF_C,
 						argv[i]

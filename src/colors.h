@@ -9,7 +9,7 @@
 
 
 	This file was made by `makeColorDefs.py` script
-	Designed by: Noah Arcouette
+	By: Noah Arcouette
 
 */
 #ifndef __BASH_COLOR_CODES__

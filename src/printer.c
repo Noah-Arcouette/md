@@ -36,7 +36,7 @@ void printer (char* data, Settings* s)
 
 	uint8_t flags = 0x00;
 
-	int hcount = 0;
+	uint8_t hcount = 0;
 
 	char* currentFG = malloc(strlen(DEF_C)+1 * sizeof(char));
 	strcpy(currentFG, DEF_C);
@@ -61,9 +61,9 @@ void printer (char* data, Settings* s)
 					))
 				{
 					if (HU)
-						printf("\x1b[4m");
+						puts("\x1b[4m");
 
-					printf("%s", CBOLD);
+					puts(CBOLD);
 
 					switch (hcount)
 					{
@@ -101,9 +101,14 @@ void printer (char* data, Settings* s)
 					if (LI)
 						printf("\t");
 
-					printf("%s%s %c", CBOLD, LIST_C, j);
-
-					printf("%s%s%s", CRES, DEF_C, B_C);
+					printf("%s%s %c%s%s%s", 
+						CBOLD, 
+						LIST_C, 
+						j,
+						CRES,
+						B_C, 
+						DEF_C
+					);
 				}
 				else
 				{

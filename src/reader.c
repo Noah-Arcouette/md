@@ -36,7 +36,8 @@ char* reader (Settings* s)
 	{
 		s->error = 1;
 
-		printf("%sError: %sFile `%s' cannot be opened.\n",
+		printf("%s%sError: %sFile `%s' cannot be opened.\n",
+			CBOLD,
 			ERROR_C,
 			DEF_C,
 			s->input

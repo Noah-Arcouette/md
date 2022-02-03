@@ -1,9 +1,13 @@
 # CC = cc -Wall -Wextra -g
 CC = cc -Wall -Wextra
 OUT = ./bin/md
-RUN = ${OUT} ./README.md
-DEBUG = ${OUT} ./doc/Styles.md
 
+
+all: ${OUT}
+	${OUT} ./README.md
+
+build: 
+	${CC} ./src/*.c -o ${OUT}
 
 ${OUT}: ./obj/printer.o ./obj/main.o ./obj/settings.o ./obj/reader.o
 	${CC} ./obj/*.o -o ${OUT}
@@ -21,14 +25,11 @@ ${OUT}: ./obj/printer.o ./obj/main.o ./obj/settings.o ./obj/reader.o
 	${CC} -c ./src/printer.c -o ./obj/printer.o 
 
 
-run:
-	${RUN}
-
 mk:
 	mkdir obj bin
 
 
-cyg: ${OUT}
+cyg: build
 	chmod a+x ${OUT}
 
 	mkdir -p "/usr/doc/md/"
@@ -37,7 +38,7 @@ cyg: ${OUT}
 
 	cp ${OUT} /usr/bin/
 
-linux: ${OUT}
+linux: build
 	sudo chown root:root ${OUT}
 	sudo chmod a+x ${OUT}
 
@@ -46,10 +47,6 @@ linux: ${OUT}
 	sudo cp ./face /usr/doc/md/face
 
 	sudo cp ${OUT} /usr/bin/
-
-debug: ${OUT}
-	${DEBUG}
-
 
 clean:
 	rm obj/*.o 
