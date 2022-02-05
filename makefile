@@ -1,5 +1,5 @@
-# CC = cc -Wall -Wextra -g
-CC = cc -Wall -Wextra
+# CC = gcc -Wall -Wextra -g
+CC = gcc -Wall -Wextra
 OUT = ./bin/md
 
 
