@@ -80,6 +80,14 @@ $ make mk
 $ make build
 ```
 
+# Update AUR
+
+```
+$ sudo rm /usr/doc/md -r
+
+$ sudo trizen -Syyu
+```
+
 # Tests
 
 Test that the command is installed with
