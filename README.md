@@ -73,7 +73,7 @@ $ sudo make install
 
 I would recommend using [trizen](https://github.com/trizen/trizen) to download
 
-## Compile and Not Insall
+## Compile and Not Install
 ```
 $ make mk
 
