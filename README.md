@@ -80,12 +80,12 @@ $ make mk
 $ make build
 ```
 
-# Update AUR
+# Update From AUR
 
 ```
 $ sudo rm /usr/doc/md -r
 
-$ sudo trizen -Syyu
+$ trizen -Syyu
 ```
 
 # Tests
