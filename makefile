@@ -1,13 +1,16 @@
 # CC = gcc -Wall -Wextra -g
-CC = gcc -Wall -Wextra
-OUT = ./bin/md
+CC      = gcc -Wall -Wextra -O0 -g
+CCBUILD = gcc -O2
+OUT     = ./bin/md
 
 
 all: ${OUT}
 	${OUT} ./README.md
 
 build: 
-	${CC} ./src/*.c -o ${OUT}
+	${CCBUILD} ./src/*.c -o ${OUT}
+
+	strip -s ${OUT}
 
 ${OUT}: ./obj/printer.o ./obj/main.o ./obj/settings.o ./obj/reader.o
 	${CC} ./obj/*.o -o ${OUT}
@@ -29,7 +32,7 @@ mk:
 	mkdir obj bin
 
 
-cyg: build
+install: build
 	chmod a+x ${OUT}
 
 	mkdir -p "/usr/doc/md/"
@@ -38,15 +41,7 @@ cyg: build
 
 	cp ${OUT} /usr/bin/
 
-linux: build
-	sudo chown root:root ${OUT}
-	sudo chmod a+x ${OUT}
-
-	sudo mkdir -p "/usr/doc/md/"
-	sudo cp ./doc/CommandLine.md /usr/doc/md/CommandLine.md
-	sudo cp ./face /usr/doc/md/face
-
-	sudo cp ${OUT} /usr/bin/
+	rm ./bin/md
 
 clean:
 	rm obj/*.o 

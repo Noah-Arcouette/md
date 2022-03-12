@@ -21,7 +21,7 @@
 #define ERROR_C	FG_9 // error color
 
 #define DEF_C	FG_253 // default color
-#define B_C 	BG_0   // background color
+#define B_C 	""   // background color
 
 #define H1_C 	FG_13 // header 1 color
 #define H2_C 	FG_14 // header 2 color

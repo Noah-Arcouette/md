@@ -15,9 +15,6 @@ MD is a MakeDown file reader with:
 
 - [ ] Style creator
 
-- [x] Linux support
-- [x] Cygwin support
-
 
 # Compatibility
 
@@ -25,9 +22,11 @@ MD is a MakeDown file reader with:
 
 [Git](https://git-scm.com/)
 
-[GNU Make](https://www.gnu.org/software/make/) - Not for Windows Native
+[GNU Make](https://www.gnu.org/software/make/) - Not on Windows Native
 
 [GCC](https://gcc.gnu.org/)
+
+BinUtils - Not on Windows Native - Usually preinstall on Linux
 
 ## Windows
 
@@ -46,18 +45,7 @@ Other - Git
 
 # Install
 
-***I suggest using `strip -s` on it ( not needed if downloading from the AUR )***
-
-***Strip with `sudo strip -s /usr/bin/md` after installation***
-
 Binary is placed in `/usr/bin/`
-
-## Cygwin
-```
-$ make mk
-
-$ make cyg
-```
 
 ## Windows
 
@@ -76,7 +64,7 @@ output file in `.\bin\md.exe` move it to were ever you want
 ```
 $ make mk
 
-$ make linux
+$ sudo make install
 ```
 
 ## AUR
@@ -84,6 +72,13 @@ $ make linux
 [MD](https://aur.archlinux.org/packages/md-git/) also is in the AUR at https://aur.archlinux.org/packages/md-git/
 
 I would recommend using [trizen](https://github.com/trizen/trizen) to download
+
+## Compile and Not Insall
+```
+$ make mk
+
+$ make build
+```
 
 # Tests
 
