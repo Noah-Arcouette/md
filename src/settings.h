@@ -19,7 +19,7 @@
 typedef struct 
 {
 	char* input;
-	int error;
+	int error:1;
 } Settings;
 
 // get settings

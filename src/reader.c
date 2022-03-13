@@ -23,13 +23,6 @@
 
 char* reader (Settings* s)
 {
-	size_t datasz = 1;
-	char* data = malloc(datasz * sizeof(char));
-	data[0] = 0;
-
-	char* line = NULL;
-	size_t len;
-
 	FILE* fp = fopen(s->input, "r");
 
 	if (fp == NULL)
@@ -43,11 +36,15 @@ char* reader (Settings* s)
 			s->input
 		);
 
-		free(line);
-		free(data);
-
 		return NULL;
 	}
+
+	register size_t datasz = 1;
+	char* data = malloc(datasz * sizeof(char));
+	data[0] = 0;
+
+	char* line = NULL;
+	size_t len;
 
 	while ((getline(&line, &len, fp)) != -1)
 	{

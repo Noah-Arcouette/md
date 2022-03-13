@@ -1,5 +1,3 @@
 obj/
 bin/
 *.stackdump
-test.md
-test/

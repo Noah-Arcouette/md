@@ -15,6 +15,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 #include "colors.h"
 #include "settings.h"
@@ -44,7 +45,7 @@ int main (const int argc, const char** argv)
 	free(s->input);
 	free(s);
 
-	printf("%s", CRES);
+	printf(CRES);
 
 	return 0;
 }

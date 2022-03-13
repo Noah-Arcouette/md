@@ -29,11 +29,10 @@
 
 // #define HU // header underline
 
-#define LIST_C FG_202 // list color
 #define CLC_C 	FG_12 // check list checked
 #define CLU_C 	FG_14 // check list unchecked
 
-#define UL_C LIST_C // under line color
+#define UL_C FG_202 // under line and list color
 
 // #define LI // list indent
 

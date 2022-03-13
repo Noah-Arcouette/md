@@ -46,7 +46,7 @@ void printer (char* data, Settings* s)
 	char* currentBG = malloc(strlen(B_C)+1 * sizeof(char));
 	strcpy(currentBG, B_C);
 
-	for (int i = 0; data[i]!='\0'; i++)
+	for (register int i = 0; data[i]!='\0'; i++)
 	{
 		switch (C)
 		{
@@ -89,46 +89,19 @@ void printer (char* data, Settings* s)
 				flags &= ~NEWLINE;
 				goto dump;
 
-			case '>':
-			case '-':
-				flags &= ~NEWLINE;
-
-				if (
-					!(flags & STOP) && 
-					!(flags & SKIP) && 
-					(
-						data[i-2] == '\n' || 
-						data[i-1] == '\n'
-					))
-				{
-					#ifdef LI
-						printf("\t");
-					#endif
-
-					printf("%s%s %c%s%s%s", 
-						CBOLD, 
-						LIST_C, 
-						C,
-						CRES,
-						B_C, 
-						DEF_C
-					);
-
-					break;
-				}
-
-				goto dump;
-
 			case '=':
+			case '-':
+			case '>':
 				if (
 					!(flags & STOP) && 
 					!(flags & SKIP) && 
 					(flags & NEWLINE)
 				)
 				{
-					printf("%s%s=%s%s%s", 
+					printf("%s%s%c%s%s%s", 
 						CBOLD, 
 						UL_C, 
+						C,
 						CRES,
 						DEF_C, 
 						B_C
@@ -147,15 +120,12 @@ void printer (char* data, Settings* s)
 					!(flags & SKIP)
 				)
 				{
-					if (data[i-1] == '*')
-					{
-						printf(CBOLD);
-					}
-
 					if (!(flags & IN))
 					{
 						#ifdef I
 							printf("\x1b[3m");
+						#else
+							printf(CBOLD);
 						#endif
 					}
 					else
@@ -266,7 +236,7 @@ void printer (char* data, Settings* s)
 			case '\n':
 				if (!(flags & SKIP))
 				{
-					hcount = 0;
+					hcount ^= hcount;
 				}
 
 				printf("\n%s%s%s", CRES, currentFG, currentBG);
@@ -281,11 +251,13 @@ void printer (char* data, Settings* s)
 				flags &= ~NEWLINE;
 
 				dump:
-					printf("%c", C);
+					putchar(C);
 					break;
 		}
 	}
 
 	free(currentBG);
 	free(currentFG);
+
+	putchar(0x0a);
 }

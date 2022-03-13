@@ -1,11 +1,10 @@
-# CC = gcc -Wall -Wextra -g
 CC      = gcc -Wall -Wextra -O0 -g
 CCBUILD = gcc -O2
 OUT     = ./bin/md
 
 
 all: ${OUT}
-	${OUT} ./README.md
+	${OUT} ./test.md
 
 build: 
 	${CCBUILD} ./src/*.c -o ${OUT}
@@ -36,7 +35,7 @@ install: build
 	chmod a+x ${OUT}
 
 	mkdir -p "/usr/doc/md/"
-	cp ./doc/CommandLine.md /usr/doc/md/CommandLine.md
+	cp ./doc/* /usr/doc/md/
 	cp ./face /usr/doc/md/face
 
 	cp ${OUT} /usr/bin/
