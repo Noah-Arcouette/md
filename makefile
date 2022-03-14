@@ -11,6 +11,8 @@ build:
 
 	strip -s ${OUT}
 
+	gzip -k ./md.1
+
 ${OUT}: ./obj/printer.o ./obj/main.o ./obj/settings.o ./obj/reader.o
 	${CC} ./obj/*.o -o ${OUT}
 
@@ -40,7 +42,14 @@ install: build
 
 	cp ${OUT} /usr/bin/
 
+	cp ./md.1.gz /usr/share/man/man1/
+
 	rm ./bin/md
+
+uninstall:
+	rm /usr/doc/md/ -r
+	rm /usr/bin/md
+	rm /usr/share/man/man1/md.1.gz
 
 clean:
 	rm obj/*.o 
