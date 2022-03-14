@@ -30,10 +30,10 @@ ${OUT}: ./obj/printer.o ./obj/main.o ./obj/settings.o ./obj/reader.o
 
 
 mk:
-	mkdir obj bin
+	mkdir -p obj bin
 
 
-install: build
+install: mk build
 	chmod a+x ${OUT}
 
 	mkdir -p "/usr/doc/md/"

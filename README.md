@@ -62,8 +62,6 @@ output file in `.\bin\md.exe` move it to were ever you want
 
 ## Linux
 ```
-$ make mk
-
 $ sudo make install
 ```
 
@@ -78,14 +76,6 @@ I would recommend using [trizen](https://github.com/trizen/trizen) to download
 $ make mk
 
 $ make build
-```
-
-# Update From AUR
-
-```
-$ sudo rm /usr/doc/md -r
-
-$ trizen -Syyu
 ```
 
 # Tests
