@@ -28,11 +28,6 @@ Header 1-3 colors
 Header Underline define for true / don't define for false
 
 
-# LIST_C
-
-List text color
-
-
 # CLC_C
 
 Checked checklist color I.E ` - [x] list`
@@ -43,12 +38,18 @@ Checked checklist color I.E ` - [x] list`
 Uncheck checklist color I.E ` - [x] list`
                                 ^ ^
 
-# UL_C
+# UL_C and List Color
 
 Underline color I.E
 ```
 underline
 =========
+```
+
+List color I.E
+```
+- list
+> list
 ```
 
 # LI
@@ -73,3 +74,26 @@ Italicize on define for true / don't define for false
 *italicize*
 ***italicize***
 ```
+
+
+# Basic Syntax Highlighting
+## OP_C
+
+Operator color
+Operators: `*+-/$#;:?=><!&|^~%`
+
+
+## INT_C
+
+Integer color
+Integers: `0123456789_.,\`
+
+## PAR_C
+
+Parentheses color
+Parentheses: `{}[]()`
+
+## STR_C
+
+String color
+Strings: `""''`

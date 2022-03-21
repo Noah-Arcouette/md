@@ -11,7 +11,8 @@ MD is a MakeDown file reader with:
 	`Hello, world!`
 	***Hello, world!***
 ```
-- [ ] basic HTML support
+- [x] Basic Syntax Highlighting I.E highlight scripts in code highlights
+***Warning Syntax highlighter doesn't know what comments are so don't type apostrophes in comments ( They can be escaped in strings )***
 
 - [ ] Style creator
 

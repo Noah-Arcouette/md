@@ -27,3 +27,40 @@ highlight
 
 tiny underline
 --------------
+
+```C
+#include <stdio.h>
+
+int fact (int x)
+{
+	if (x > 1)
+		return fact(x-1) * x;
+
+	return 1;
+}
+
+int main ()
+{
+	const x = fact(10);
+
+	printf("%d\n", x);
+
+	return 0;
+}
+```
+
+```python
+
+def main ():
+	msgTop = "Hello,";
+	msgBot = "world!";
+
+	msgTop += ' ';
+	msgTop += msgBot;
+
+	print(msgTop);
+
+if __name__ == "__main__":
+	main();
+
+```

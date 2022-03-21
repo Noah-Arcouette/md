@@ -30,6 +30,9 @@
 #define LIST 		0b10000
 #define STOP 		0b100000
 
+#define INSTR       0b1000000
+#define BACKSLASH   0b10000000
+
 #define C data[i]
 
 void printer (char* data, Settings* s)
@@ -40,6 +43,8 @@ void printer (char* data, Settings* s)
 
 	register uint8_t hcount = 0;
 
+	register char hold;
+
 	char* currentFG = malloc(strlen(DEF_C)+1 * sizeof(char));
 	strcpy(currentFG, DEF_C);
 
@@ -48,6 +53,93 @@ void printer (char* data, Settings* s)
 
 	for (register int i = 0; data[i]!='\0'; i++)
 	{
+		if (flags & TICK || flags & SKIP)
+		{
+			if (
+				!(flags & INSTR) && 
+				(C == '"' || C == '\'')
+			)
+			{
+				hold = C;
+				flags ^= INSTR;
+			}
+			else if (C == hold && !(flags & BACKSLASH))
+			{
+				flags ^= INSTR;
+			}
+
+			if (C == '\\' && !(flags & BACKSLASH))
+			{
+				flags |= BACKSLASH;
+			}
+			else
+			{
+				flags &= ~BACKSLASH;
+			}
+
+			if (flags & INSTR)
+			{
+				printf("%s", STR_C);
+			}
+			else
+			{
+				switch (C)
+				{
+					case '*':
+					case '+':
+					case '-':
+					case '/':
+					case '$':
+					case '#':
+					case ';':
+					case ':':
+					case '?':
+					case '=':
+					case '>':
+					case '<':
+					case '!':
+					case '&':
+					case '|':
+					case '^':
+					case '~':
+					case '%':
+						printf("%s", OP_C);
+						break;
+					case '0':
+					case '1':
+					case '2':
+					case '3':
+					case '4':
+					case '5':
+					case '6':
+					case '7':
+					case '8':
+					case '9':
+					case '_':
+					case '.':
+					case ',':
+					case '\\':
+						printf("%s", INT_C);
+						break;
+					case '(':
+					case ')':
+					case '[':
+					case ']':
+					case '{':
+					case '}':
+						printf("%s", PAR_C);
+						break;
+					case '"':
+					case '\'':
+						break;
+					case ' ':
+					default:
+						printf("%s", HL_C);
+						break;
+				}
+			}		
+		}
+
 		switch (C)
 		{
 			case '#':

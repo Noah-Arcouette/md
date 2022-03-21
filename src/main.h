@@ -39,6 +39,11 @@
 #define HLB_C 	 BG_239 // highlight background color
 #define HL_C 	 FG_10  // highlight foreground color
 
+#define OP_C  FG_202 // operator color
+#define INT_C FG_170  // integer color
+#define PAR_C FG_33  // parentheses color
+#define STR_C FG_214 // string color
+
 // #define I // italicize
 
 #endif // __MAIN_H__
