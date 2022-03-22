@@ -37,7 +37,7 @@
 
 void printer (char* data, Settings* s)
 {
-	printf("%s%s%s", CRES, DEF_C, B_C);
+	printf(CRES DEF_C B_C);
 
 	register uint8_t flags = 0x00;
 
@@ -79,7 +79,7 @@ void printer (char* data, Settings* s)
 
 			if (flags & INSTR)
 			{
-				printf("%s", STR_C);
+				printf(STR_C);
 			}
 			else
 			{
@@ -103,7 +103,7 @@ void printer (char* data, Settings* s)
 					case '^':
 					case '~':
 					case '%':
-						printf("%s", OP_C);
+						printf(OP_C);
 						break;
 					case '0':
 					case '1':
@@ -119,7 +119,7 @@ void printer (char* data, Settings* s)
 					case '.':
 					case ',':
 					case '\\':
-						printf("%s", INT_C);
+						printf(INT_C);
 						break;
 					case '(':
 					case ')':
@@ -127,14 +127,14 @@ void printer (char* data, Settings* s)
 					case ']':
 					case '{':
 					case '}':
-						printf("%s", PAR_C);
+						printf(PAR_C);
 						break;
 					case '"':
 					case '\'':
 						break;
 					case ' ':
 					default:
-						printf("%s", HL_C);
+						printf(HL_C);
 						break;
 				}
 			}		
@@ -190,13 +190,14 @@ void printer (char* data, Settings* s)
 					(flags & NEWLINE)
 				)
 				{
-					printf("%s%s%c%s%s%s", 
-						CBOLD, 
-						UL_C, 
-						C,
-						CRES,
-						DEF_C, 
-						B_C
+					printf(
+						CBOLD
+						UL_C
+						"%c"
+						CRES
+						DEF_C
+						B_C,
+						C
 					);
 
 					break;
@@ -221,7 +222,7 @@ void printer (char* data, Settings* s)
 						#endif
 					}
 					else
-						printf("%s%s%s", CRES, DEF_C, B_C);
+						printf(CRES DEF_C B_C);
 
 					flags ^= IN;
 
@@ -259,11 +260,11 @@ void printer (char* data, Settings* s)
 
 				if (!(flags & TICK))
 				{
-					printf("%s%s`", HLB_C, HL_C);
+					printf(HLB_C HL_C "`");
 				}
 				else
 				{
-					printf("`%s%s%s", CRES, DEF_C, B_C);
+					printf("`" CRES DEF_C B_C);
 				}
 
 				if (flags & SKIP)
@@ -282,7 +283,7 @@ void printer (char* data, Settings* s)
 					!(flags & SKIP)
 				)
 				{
-					printf("%s[", CLU_C);
+					printf(CLU_C "[");
 
 					flags |= LIST;
 
@@ -299,7 +300,7 @@ void printer (char* data, Settings* s)
 					!(flags & SKIP)
 				)
 				{
-					printf("%s]%s%s%s", CLU_C, CRES, DEF_C, B_C);
+					printf(CLU_C "]" CRES DEF_C B_C);
 				
 					flags &= ~LIST;
 
@@ -318,7 +319,7 @@ void printer (char* data, Settings* s)
 					!(flags & SKIP)
 				)
 				{
-					printf("%s%c", CLC_C, C);
+					printf(CLC_C "%c", C);
 
 					break;
 				}
@@ -331,7 +332,7 @@ void printer (char* data, Settings* s)
 					hcount ^= hcount;
 				}
 
-				printf("\n%s%s%s", CRES, currentFG, currentBG);
+				printf("\n" CRES "%s%s", currentFG, currentBG);
 				flags |= NEWLINE;
 
 				break;
@@ -351,5 +352,5 @@ void printer (char* data, Settings* s)
 	free(currentBG);
 	free(currentFG);
 
-	putchar(0x0a);
+	printf("\n" CRES);
 }

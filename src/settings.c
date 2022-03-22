@@ -73,10 +73,7 @@ Settings* gset (const int argc, const char** argv)
 
 					kill = 1;
 
-					printf("%s%sError: %sUnknown option `%s'.\n",
-						CBOLD,
-						ERROR_C,
-						DEF_C,
+					printf(CBOLD ERROR_C "Error: " DEF_C "Unknown option `%s'.\n",
 						argv[i]
 					);
 
