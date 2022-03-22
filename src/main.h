@@ -18,31 +18,31 @@
 
 #include "colors.h"
 
-#define ERROR_C	FG_9 // error color
+#define ERROR_C	FG_ANSI(9) // error color
 
-#define DEF_C	FG_253 // default color
+#define DEF_C	FG_ANSI(253) // default color
 #define B_C 	""   // background color
 
-#define H1_C 	FG_13 // header 1 color
-#define H2_C 	FG_14 // header 2 color
-#define H3_C 	FG_12 // header 3 color
+#define H1_C 	FG_ANSI(13) // header 1 color
+#define H2_C 	FG_ANSI(14) // header 2 color
+#define H3_C 	FG_ANSI(12) // header 3 color
 
 // #define HU // header underline
 
-#define CLC_C 	FG_12 // check list checked
-#define CLU_C 	FG_14 // check list unchecked
+#define CLC_C 	FG_ANSI(12) // check list checked
+#define CLU_C 	FG_ANSI(14) // check list unchecked
 
-#define UL_C FG_202 // under line and list color
+#define UL_C FG_ANSI(202) // under line and list color
 
 // #define LI // list indent
 
-#define HLB_C 	 BG_239 // highlight background color
-#define HL_C 	 FG_10  // highlight foreground color
+#define HLB_C 	 BG_ANSI(239) // highlight background color
+#define HL_C 	 FG_ANSI(10)  // highlight foreground color
 
-#define OP_C  FG_202 // operator color
-#define INT_C FG_170  // integer color
-#define PAR_C FG_33  // parentheses color
-#define STR_C FG_214 // string color
+#define OP_C  FG_ANSI(202) // operator color
+#define INT_C FG_ANSI(170)  // integer color
+#define PAR_C FG_ANSI(33)  // parentheses color
+#define STR_C FG_ANSI(214) // string color
 
 // #define I // italicize
 
