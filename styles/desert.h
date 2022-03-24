@@ -29,7 +29,7 @@
 
 #define UL_C FG_RGB(189, 183, 107) // under line and list color
 
-#define HLB_C 	 BG_RGB(25, 25, 25) // highlight background color
+#define HLB_C 	 BG_RGB(51, 51, 51) // highlight background color
 #define HL_C 	 FG_RGB(135, 206, 235)  // highlight foreground color
 
 #define OP_C  FG_RGB(240, 230, 140)  // operator color
