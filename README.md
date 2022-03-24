@@ -14,7 +14,20 @@ MD is a MakeDown file reader with:
 - [x] Basic Syntax Highlighting I.E highlight scripts in code highlights
 ***Warning Syntax highlighter doesn't know what comments are so don't type apostrophes in comments ( They can be escaped in strings )***
 
-- [ ] Style creator
+# Styles
+
+All styles are in the `./styles` directory. 
+You can set the `STYLE` variable in make for file name I.E
+```
+$ make build STYLE=default
+```
+
+Or you can use `STYLEFILE` for full path to file I.E
+```
+$ make build STYLEFILE=./styles/default.h
+```
+
+For more info about `Styling` read the `./doc/Styles.md` file.
 
 
 # Compatibility
@@ -77,6 +90,12 @@ I would recommend using [trizen](https://github.com/trizen/trizen) to download
 $ make mk
 
 $ make build
+```
+
+## Uninstall
+
+```
+$ sudo make uninstall
 ```
 
 # Tests

@@ -1,6 +1,10 @@
-***File src/main.h***
-***FG_ for foreground and BG_ for background***
+***File ./src/style.h***
+***FG_ANSI for foreground and BG_ANSI for background***
 ***Use bash 256 [color codes](https://raw.githubusercontent.com/seedform/color256/master/20160221144140.png)***
+
+***You can also use FG_RGB and BG_RGB with hex color values***
+
+***Use an empty string for no change in color***
 
 
 # ERROR_C

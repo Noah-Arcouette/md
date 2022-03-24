@@ -1,12 +1,16 @@
 CC      = gcc -Wall -Wextra -O0 -g
 CCBUILD = gcc -O2
 OUT     = ./bin/md
+STYLE   = default
+STYLEFILE = ./styles/${STYLE}.h
 
+style:
+	cp ${STYLEFILE} ./src/style.h
 
-all: ${OUT}
+all: style ${OUT}
 	${OUT} ./test.md
 
-build: 
+build: style
 	${CCBUILD} ./src/*.c -o ${OUT}
 
 	strip -s ${OUT}
@@ -25,7 +29,7 @@ ${OUT}: ./obj/printer.o ./obj/main.o ./obj/settings.o ./obj/reader.o
 ./obj/reader.o: ./src/reader.c 
 	${CC} -c ./src/reader.c -o ./obj/reader.o 
 
-./obj/printer.o: ./src/printer.c ./src/main.h
+./obj/printer.o: ./src/printer.c ./src/style.h
 	${CC} -c ./src/printer.c -o ./obj/printer.o 
 
 
