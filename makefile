@@ -59,4 +59,4 @@ uninstall:
 	rm /usr/share/man/man1/md.1.gz
 
 clean:
-	rm obj/*.o 
+	rm -f ./obj/* ./bin/* ./src/style.h *.gz

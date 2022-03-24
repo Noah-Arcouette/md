@@ -332,7 +332,7 @@ void printer (char* data, Settings* s)
 					hcount ^= hcount;
 				}
 
-				printf("\n" CRES "%s%s", currentFG, currentBG);
+				printf(CRES "%s%s\n", currentFG, currentBG);
 				flags |= NEWLINE;
 
 				break;
