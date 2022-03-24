@@ -116,3 +116,17 @@ $ md -h
 ```
 
 Should display the help message.
+
+
+# See Also
+
+## Styles 
+
+doxy, and desert are taken from https://github.com/googlearchive/code-prettify
+
+default, moon, and tty-support made by [me](https://github.com/Noah-Arcouette/)
+
+
+## Face
+
+The face is of former president of the USA [Donald John Trump](https://www.donaldjtrump.com/)

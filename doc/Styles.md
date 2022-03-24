@@ -56,10 +56,6 @@ List color I.E
 > list
 ```
 
-# LI
-
-Weather a list item will be indented define for true / don't define for false
-
 
 # HLB_C
 
