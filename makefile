@@ -4,11 +4,11 @@ OUT     = ./bin/md
 STYLE   = default
 STYLEFILE = ./styles/${STYLE}.h
 
-style:
-	cp ${STYLEFILE} ./src/style.h
-
 all: style ${OUT}
 	${OUT} ./test.md
+
+style:
+	cp ${STYLEFILE} ./src/style.h
 
 build: style
 	${CCBUILD} ./src/*.c -o ${OUT}
@@ -16,6 +16,8 @@ build: style
 	strip -s ${OUT}
 
 	gzip -k ./md.1
+
+	rm ./src/style.h
 
 ${OUT}: ./obj/printer.o ./obj/main.o ./obj/settings.o ./obj/reader.o
 	${CC} ./obj/*.o -o ${OUT}
