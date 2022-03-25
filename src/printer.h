@@ -16,6 +16,6 @@
 #ifndef __PRINTER_H__
 #define __PRINTER_H__
 
-void printer 	(char*, Settings*);
+void printer 	(char*);
 
 #endif // __PRINTER_H__

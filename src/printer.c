@@ -35,7 +35,7 @@
 
 #define C data[i]
 
-void printer (char* data, Settings* s)
+void printer (char* data)
 {
 	printf(CRES DEF_C B_C);
 
@@ -344,7 +344,7 @@ void printer (char* data, Settings* s)
 				flags &= ~NEWLINE;
 
 				dump:
-					putchar(C);
+					printf("%c", C);
 					break;
 		}
 	}
