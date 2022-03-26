@@ -1,4 +1,3 @@
-***File ./src/style.h***
 ***FG_ANSI for foreground and BG_ANSI for background***
 ***Use bash 256 [color codes](https://raw.githubusercontent.com/seedform/color256/master/20160221144140.png)***
 
