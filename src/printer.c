@@ -46,10 +46,10 @@ void printer (char* data)
 
 	register char hold;
 
-	char* currentFG = malloc(strlen(DEF_C)+1 * sizeof(char));
+	char* currentFG = malloc(sizeof(DEF_C) * sizeof(char));
 	strcpy(currentFG, DEF_C);
 
-	char* currentBG = malloc(strlen(B_C)+1 * sizeof(char));
+	char* currentBG = malloc(sizeof(B_C) * sizeof(char));
 	strcpy(currentBG, B_C);
 
 	for (register int i = 0; data[i]!='\0'; i++)

@@ -97,16 +97,16 @@ switch (C)
 
 			if ((flags & SKIP))
 			{
-				currentFG = realloc(currentFG, strlen(HL_C)+1 * sizeof(char));
-				currentBG = realloc(currentBG, strlen(HLB_C)+1 * sizeof(char));
+				currentFG = realloc(currentFG, sizeof(HL_C) * sizeof(char));
+				currentBG = realloc(currentBG, sizeof(HLB_C) * sizeof(char));
 			
 				strcpy(currentFG, HL_C);
 				strcpy(currentBG, HLB_C);
 			}
 			else
 			{
-				currentFG = realloc(currentFG, strlen(DEF_C)+1 * sizeof(char));
-				currentBG = realloc(currentBG, strlen(B_C)+1 * sizeof(char));
+				currentFG = realloc(currentFG, sizeof(DEF_C) * sizeof(char));
+				currentBG = realloc(currentBG, sizeof(B_C) * sizeof(char));
 			
 				strcpy(currentFG, DEF_C);
 				strcpy(currentBG, B_C);

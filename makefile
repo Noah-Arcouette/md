@@ -7,7 +7,7 @@ STYLEFILE = ./styles/${STYLE}.h
 all: style ${OUT}
 	${OUT} ./test.md
 
-style:
+style: ${STYLEFILE}
 	cp ${STYLEFILE} ./inc/style.h
 
 
