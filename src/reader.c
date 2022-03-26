@@ -18,8 +18,9 @@
 #include <string.h>
 
 #include "settings.h"
+#include "colors.h"
 #include "reader.h"
-#include "main.h"
+#include "style.h"
 
 char* reader (Settings* s)
 {

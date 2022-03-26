@@ -3,4 +3,4 @@ bin/
 *.stackdump
 *.gz
 test/
-src/style.h
+inc/style.h

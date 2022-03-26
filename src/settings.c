@@ -19,7 +19,8 @@
 #include <stdint.h>
 
 #include "settings.h"
-#include "main.h"
+#include "colors.h"
+#include "style.h"
 
 #ifdef _WIN32
 #	define HELP "C:\\ProgramData\\md\\CommandLine.md"

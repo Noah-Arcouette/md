@@ -19,9 +19,10 @@
 #include <stdint.h>
 
 #include "settings.h"
+#include "colors.h"
 #include "printer.h"
 
-#include "main.h"
+#include "style.h"
 
 #define IN   		0b1
 #define SKIP 		0b10

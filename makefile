@@ -1,5 +1,5 @@
-CC        = gcc -Wall -Wextra -O0 -g
-CCBUILD   = gcc -O2
+CC        = gcc -I./inc -Wall -Wextra -O0 -g
+CCBUILD   = gcc -I./inc -O2
 OUT       = ./bin/md
 STYLE     = default
 STYLEFILE = ./styles/${STYLE}.h
@@ -8,7 +8,7 @@ all: style ${OUT}
 	${OUT} ./test.md
 
 style:
-	cp ${STYLEFILE} ./src/style.h
+	cp ${STYLEFILE} ./inc/style.h
 
 
 build: style
@@ -18,7 +18,7 @@ build: style
 
 	gzip -k ./md.1
 
-	rm ./src/style.h
+	rm ./inc/style.h
 
 ${OUT}: ./obj/printer.o ./obj/main.o ./obj/settings.o ./obj/reader.o
 	${CC} ./obj/*.o -o ${OUT}
@@ -26,13 +26,13 @@ ${OUT}: ./obj/printer.o ./obj/main.o ./obj/settings.o ./obj/reader.o
 ./obj/main.o: ./src/main.c 
 	${CC} -c ./src/main.c -o ./obj/main.o 
 
-./obj/settings.o: ./src/settings.c ./src/style.h
+./obj/settings.o: ./src/settings.c ./inc/style.h
 	${CC} -c ./src/settings.c -o ./obj/settings.o 
 
-./obj/reader.o: ./src/reader.c ./src/style.h
+./obj/reader.o: ./src/reader.c ./inc/style.h
 	${CC} -c ./src/reader.c -o ./obj/reader.o 
 
-./obj/printer.o: ./src/printer.c ./src/style.h
+./obj/printer.o: ./src/printer.c ./inc/style.h
 	${CC} -c ./src/printer.c -o ./obj/printer.o 
 
 
@@ -59,4 +59,4 @@ uninstall:
 	rm /usr/share/man/man1/md.1.gz
 
 clean:
-	rm -f ./obj/* ./bin/* ./src/style.h *.gz
+	rm -f ./obj/* ./bin/* ./inc/style.h *.gz
