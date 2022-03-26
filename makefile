@@ -3,20 +3,9 @@ CCBUILD   = gcc -O2
 OUT       = ./bin/md
 STYLE     = default
 STYLEFILE = ./styles/${STYLE}.h
-LIBOUT    = ./bin/libmarkdown.so
 
 all: style ${OUT}
 	${OUT} ./test.md
-
-lib: style
-	${CCBUILD} -I./inc --shared -o ${LIBOUT} ./src/printer.c ./src/libmd.c
-
-	strip -s ${LIBOUT}
-
-# 	gzip -k ./mdout.1
-# 	gzip -k ./libmarkdown.1
-
-	rm ./src/style.h
 
 style:
 	cp ${STYLEFILE} ./src/style.h
