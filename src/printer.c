@@ -55,6 +55,7 @@ void printer (char* data)
 	for (register int i = 0; data[i]!='\0'; i++)
 	{
 		#include "syntax.c"		
+		
 		#include "md.c"
 	}
 

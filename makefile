@@ -12,7 +12,12 @@ style: ${STYLEFILE}
 
 
 build: style
-	${CCBUILD} ./src/*.c -o ${OUT}
+	${CCBUILD} \
+	./src/main.c \
+	./src/reader.c \
+	./src/settings.c \
+	./src/printer.c \
+	-o ${OUT}
 
 	strip -s ${OUT}
 
