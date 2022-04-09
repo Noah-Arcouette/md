@@ -52,7 +52,6 @@ switch (C)
 				CBOLD
 				UL_C
 				"%c"
-				CRES
 				DEF_C
 				B_C,
 				C
@@ -190,7 +189,7 @@ switch (C)
 			hcount ^= hcount;
 		}
 
-		printf(CRES "%s%s\n", currentFG, currentBG);
+		printf("%s%s\n", currentFG, currentBG);
 		flags |= NEWLINE;
 
 		break;

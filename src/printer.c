@@ -38,8 +38,6 @@
 
 void printer (char* data)
 {
-	printf(CRES DEF_C B_C);
-
 	register uint8_t flags = 0x00;
 
 	register uint8_t hcount = 0;
@@ -61,6 +59,4 @@ void printer (char* data)
 
 	free(currentBG);
 	free(currentFG);
-
-	printf("\n" CRES);
 }
