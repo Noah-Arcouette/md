@@ -13,6 +13,8 @@
 
 */
 
+#include <advo.h>
+
 #define ERROR_C	FG_RGB(255, 40, 0) // error color
 
 #define DEF_C	FG_RGB(255, 255, 255) // default color
