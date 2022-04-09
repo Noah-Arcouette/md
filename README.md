@@ -54,7 +54,7 @@ For more info about `Styling` read the `./doc/Styles.md` file.
 BinUtils - Usually preinstall on Linux
 
 ***Optional***
-To remove ADVO comment out `#define ADVO` in out selected style
+To remove ADVO comment out `#define ADVO` in selected style
 [LibAdvo](https://github.com/Noah-Arcouette/advo)
 
 
