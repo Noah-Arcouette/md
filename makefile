@@ -5,7 +5,7 @@ STYLE     = default
 STYLEFILE = ./styles/${STYLE}.h
 
 all: style ${OUT}
-	${OUT} ./test.md
+	${OUT} -h 
 
 style: ${STYLEFILE}
 	cp ${STYLEFILE} ./inc/style.h

@@ -53,7 +53,7 @@ Settings* gset (const int argc, const char** argv)
 			switch (argv[i][1])
 			{
 				case 'h':
-					s->input = realloc(s->input, (strlen(HELP)+1) * sizeof(char));
+					s->input = realloc(s->input, sizeof(HELP) * sizeof(char));
 					strcpy(s->input, HELP);
 
 					kill = 1;
@@ -92,7 +92,7 @@ Settings* gset (const int argc, const char** argv)
 	}
 
 	char* output = malloc(
-		sizeof("FILE:  ") + sizeof(s->input) + 1 +
+		sizeof("FILE:  ") + strlen(s->input) + 1 +
 		sizeof("STYLE: ") + sizeof(NAME) +
 		sizeof(" By: ") + sizeof(BY) + 1
 		);
