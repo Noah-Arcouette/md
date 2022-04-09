@@ -47,9 +47,9 @@ switch (C)
 					strcat(output, H2_C);
 					break;
 				default: 
-					outputsz+=sizeof(H2_C);
+					outputsz+=sizeof(H3_C);
 					output = realloc(output, outputsz);
-					strcat(output, H2_C);
+					strcat(output, H3_C);
 					break;
 			}
 

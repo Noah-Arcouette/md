@@ -43,7 +43,7 @@ $ sudo make install STYLEFILE=./styles/default.h
 For more info about `Styling` read the `./doc/Styles.md` file.
 
 
-# Required To Make ( Can be uninstalled after )
+# Required
 
 [Git](https://git-scm.com/)
 
@@ -52,6 +52,10 @@ For more info about `Styling` read the `./doc/Styles.md` file.
 [GCC](https://gcc.gnu.org/)
 
 BinUtils - Usually preinstall on Linux
+
+***Optional***
+To remove ADVO comment out `#define ADVO` in out selected style
+[LibAdvo](https://github.com/Noah-Arcouette/advo)
 
 
 # Install

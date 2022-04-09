@@ -13,6 +13,8 @@
 
 */
 
+#include <advo.h>
+
 #define EMERALD            FG_RGB(69, 203, 133)
 #define BISQUE             FG_RGB(255, 225, 198)
 #define MEDIUM_TURQUOISE   FG_RGB(87, 226, 229)
@@ -44,5 +46,18 @@
 #define INT_C CHARM_PINK  // integer color
 #define PAR_C GLAUCOUS  // parentheses color
 #define STR_C MEDIUM_TURQUOISE // string color
+
+
+#define ADVO
+
+#define TEXTC COLOR_RGB_FG(106, 127, 219)
+#define BOXC  COLOR_RGB_FG(87, 226, 229)
+
+#define NAME "Moon"
+#define BY   "Noah Arcouette"
+
+#define BOX_TYPE_CIR
+// #define BOX_TYPE_SBOX
+// #define BOX_TYPE_BOX
 
 #define I // italicize

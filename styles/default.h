@@ -12,6 +12,9 @@
 	https://github.com/Noah-Arcouette
 
 */
+
+#include <advo.h>
+
 #define ERROR_C	FG_ANSI(9) // error color
 
 #define DEF_C	FG_ANSI(253) // default color
@@ -37,5 +40,18 @@
 #define INT_C FG_ANSI(170)  // integer color
 #define PAR_C FG_ANSI(33)  // parentheses color
 #define STR_C FG_ANSI(214) // string color
+
+#define ADVO
+
+#define TEXTC COLOR_ANSI_FG(253)
+#define BOXC  COLOR_ANSI_FG(33)
+
+#define NAME "Default"
+#define BY   "Noah Arcouette"
+
+
+// #define BOX_TYPE_CIR
+#define BOX_TYPE_SBOX
+// #define BOX_TYPE_BOX
 
 // #define I // italicize

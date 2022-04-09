@@ -13,6 +13,8 @@
 
 */
 
+#include <advo.h>
+
 #define ERROR_C	FG_RGB(221, 0, 6) // error color
 
 #define DEF_C	FG_RGB(240, 240, 240) // default color
@@ -36,5 +38,17 @@
 #define INT_C FG_RGB(51, 135, 204)  // integer color
 #define PAR_C FG_RGB(84, 112, 255)  // parentheses color
 #define STR_C FG_RGB(254, 194, 67) // string color
+
+#define ADVO
+
+#define TEXTC COLOR_RGB_FG(208, 160, 208)
+#define BOXC  COLOR_RGB_FG(84, 112, 255)
+
+#define NAME "Doxy"
+#define BY   "Noah Arcouette"
+
+#define BOX_TYPE_CIR
+// #define BOX_TYPE_SBOX
+// #define BOX_TYPE_BOX
 
 #define I // italicize

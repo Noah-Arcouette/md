@@ -17,6 +17,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdint.h>
+#ifdef ADVO
+#	include <advo.h>
+#endif
 
 #include "settings.h"
 #include "colors.h"
@@ -65,6 +68,25 @@ void printer (char* data)
 	free(currentBG);
 	free(currentFG);
 
-	printf("%s", output);
+	printf(B_C);
+
+	#ifdef ADVO
+		struct Color box  = BOXC;
+		struct Color text = TEXTC;
+
+
+		#ifdef BOX_TYPE_CIR
+			cirNum(output, box, text);
+		#elif defined BOX_TYPE_SBOX
+			sboxNum(output, box, text);
+		#elif defined BOX_TYPE_BOX
+			boxNum(output, box, text);
+		#else
+			printf(output);
+		#endif
+	#else
+		printf(output);
+	#endif
+
 	free(output);
 }

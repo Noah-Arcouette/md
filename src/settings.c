@@ -17,6 +17,9 @@
 #include <string.h>
 #include <stdlib.h>
 #include <stdint.h>
+#ifdef ADVO
+#	include <advo.h>
+#endif
 
 #include "settings.h"
 #include "colors.h"
@@ -87,6 +90,32 @@ Settings* gset (const int argc, const char** argv)
 			strcpy(s->input, argv[i]);
 		}
 	}
+
+	char* output = malloc(
+		sizeof("FILE:  ") + sizeof(s->input) + 1 +
+		sizeof("STYLE: ") + sizeof(NAME) +
+		sizeof(" By: ") + sizeof(BY) + 1
+		);
+	strcpy(output, "FILE:  ");
+	strcat(output, s->input);
+	strcat(output, "\n");
+	strcat(output, "STYLE: " NAME " By: " BY "\n");
+
+	#ifdef ADVO
+		struct Color box  = BOXC;
+		struct Color text = TEXTC;
+
+		printf(B_C);
+
+
+		#ifdef BOX_TYPE_CIR
+			cirText(output, box, text);
+		#elif defined BOX_TYPE_SBOX
+			sboxText(output, box, text);
+		#elif defined BOX_TYPE_BOX
+			boxText(output, box, text);
+		#endif
+	#endif
 
 	return s;
 }

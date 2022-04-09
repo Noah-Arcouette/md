@@ -37,4 +37,16 @@
 #define PAR_C FG_RGB(205, 92, 92)  // parentheses color
 #define STR_C FG_RGB(255, 160, 160) // string color
 
+#define ADVO
+
+#define TEXTC COLOR_RGB_FG(189, 183, 107)
+#define BOXC  COLOR_RGB_FG(205, 92, 92)
+
+#define NAME "Desert"
+#define BY   "Noah Arcouette"
+
+#define BOX_TYPE_CIR
+// #define BOX_TYPE_SBOX
+// #define BOX_TYPE_BOX
+
 #define I // italicize

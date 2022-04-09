@@ -14,6 +14,9 @@
 	this file is for users running on a TTY session
 
 */
+
+#include <advo.h>
+
 #define ERROR_C	FG_ANSI(1) // error color
 
 #define DEF_C	FG_ANSI(7) // default color
@@ -39,5 +42,17 @@
 #define INT_C FG_ANSI(5)  // integer color
 #define PAR_C FG_ANSI(4)  // parentheses color
 #define STR_C FG_ANSI(3) // string color
+
+#define ADVO
+
+#define TEXTC COLOR_ANSI_FG(7)
+#define BOXC  COLOR_ANSI_FG(4)
+
+#define NAME "TTY-Support"
+#define BY   "Noah Arcouette"
+
+// #define BOX_TYPE_CIR
+// #define BOX_TYPE_SBOX
+#define BOX_TYPE_BOX
 
 // #define I // italicize

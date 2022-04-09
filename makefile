@@ -17,7 +17,7 @@ build: style
 	./src/reader.c \
 	./src/settings.c \
 	./src/printer.c \
-	-o ${OUT}
+	-o ${OUT} -ladvo
 
 	strip -s ${OUT}
 
@@ -26,7 +26,7 @@ build: style
 	rm ./inc/style.h
 
 ${OUT}: ./obj/printer.o ./obj/main.o ./obj/settings.o ./obj/reader.o
-	${CC} ./obj/*.o -o ${OUT}
+	${CC} ./obj/*.o -o ${OUT} -ladvo
 
 ./obj/main.o: ./src/main.c 
 	${CC} -c ./src/main.c -o ./obj/main.o 

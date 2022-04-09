@@ -96,3 +96,36 @@ Parentheses: `{}[]()`
 
 String color
 Strings: `""''`
+
+
+# ADVO
+
+MD uses libadvo with vars
+if you don't want to install ADVO comment out `ADVO`
+
+## TEXTC
+***Warning making color bold will make the entire line bold***
+
+Box text color 
+use libadvo docs for color definition info
+
+## BOXC
+***Warning making color bold will make the entire line bold***
+
+Box border color 
+use libadvo docs for color definition info
+
+## BOX_TYPE_CIR
+## BOX_TYPE_SBOX
+## BOX_TYPE_BOX
+
+Define one or none of these to define the box shape
+
+
+# NAME
+
+Style name
+
+# BY
+
+Style author
