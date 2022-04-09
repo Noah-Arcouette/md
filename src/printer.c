@@ -50,6 +50,11 @@ void printer (char* data)
 	char* currentBG = malloc(sizeof(B_C) * sizeof(char));
 	strcpy(currentBG, B_C);
 
+	register size_t outputsz = 1 + sizeof(B_C);
+	char* output = malloc(outputsz);
+	output[0] = '\0';
+	strcat(output, B_C);
+
 	for (register int i = 0; data[i]!='\0'; i++)
 	{
 		#include "syntax.c"		
@@ -59,4 +64,7 @@ void printer (char* data)
 
 	free(currentBG);
 	free(currentFG);
+
+	printf("%s", output);
+	free(output);
 }

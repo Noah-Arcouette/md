@@ -1,3 +1,17 @@
+/*
+	      _____           ___
+	     /  _  \         /  /
+	    /  / \  \       /  /
+	   /  /___\  \     /  /
+	  /  ______\  \   /  /
+	 /  /       \  \_/  /
+	/__/         \_____/
+
+
+	This file was made for a Noah Arcouette product.
+	https://github.com/Noah-Arcouette
+
+*/
 if (flags & TICK || flags & SKIP)
 {
 	if (
@@ -24,7 +38,9 @@ if (flags & TICK || flags & SKIP)
 
 	if (flags & INSTR)
 	{
-		printf(STR_C);
+		outputsz += sizeof(STR_C);
+		output = realloc(output, outputsz);
+		strcat(output, STR_C);
 	}
 	else
 	{
@@ -48,7 +64,9 @@ if (flags & TICK || flags & SKIP)
 			case '^':
 			case '~':
 			case '%':
-				printf(OP_C);
+				outputsz += sizeof(OP_C);
+				output = realloc(output, outputsz);
+				strcat(output, OP_C);
 				break;
 			case '0':
 			case '1':
@@ -64,7 +82,9 @@ if (flags & TICK || flags & SKIP)
 			case '.':
 			case ',':
 			case '\\':
-				printf(INT_C);
+				outputsz += sizeof(INT_C);
+				output = realloc(output, outputsz);
+				strcat(output, INT_C);
 				break;
 			case '(':
 			case ')':
@@ -72,14 +92,18 @@ if (flags & TICK || flags & SKIP)
 			case ']':
 			case '{':
 			case '}':
-				printf(PAR_C);
+				outputsz += sizeof(PAR_C);
+				output = realloc(output, outputsz);
+				strcat(output, PAR_C);
 				break;
 			case '"':
 			case '\'':
 				break;
 			case ' ':
 			default:
-				printf(HL_C);
+				outputsz += sizeof(HL_C);
+				output = realloc(output, outputsz);
+				strcat(output, HL_C);
 				break;
 		}
 	}		

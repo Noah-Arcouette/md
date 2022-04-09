@@ -1,3 +1,17 @@
+/*
+	      _____           ___
+	     /  _  \         /  /
+	    /  / \  \       /  /
+	   /  /___\  \     /  /
+	  /  ______\  \   /  /
+	 /  /       \  \_/  /
+	/__/         \_____/
+
+
+	This file was made for a Noah Arcouette product.
+	https://github.com/Noah-Arcouette
+
+*/
 switch (C)
 {
 	case '#':
@@ -11,21 +25,31 @@ switch (C)
 			))
 		{
 			#ifdef HU
-				printf("\x1b[4m");
+				outputsz+=4;
+				output = realloc(output, outputsz);
+				strcat(output, "\x1b[4m");
 			#endif
 
-			printf(CBOLD);
+			outputsz+=4;
+			output = realloc(output, outputsz);
+			strcat(output, CBOLD);
 
 			switch (hcount)
 			{
 				case 0:
-					printf(H1_C);
+					outputsz+=sizeof(H1_C);
+					output = realloc(output, outputsz);
+					strcat(output, H1_C);
 					break;
 				case 1:
-					printf(H2_C);
+					outputsz+=sizeof(H2_C);
+					output = realloc(output, outputsz);
+					strcat(output, H2_C);
 					break;
 				default: 
-					printf(H3_C);
+					outputsz+=sizeof(H2_C);
+					output = realloc(output, outputsz);
+					strcat(output, H2_C);
 					break;
 			}
 
@@ -48,14 +72,11 @@ switch (C)
 			(flags & NEWLINE)
 		)
 		{
-			printf(
-				CBOLD
-				UL_C
-				"%c"
-				DEF_C
-				B_C,
-				C
-			);
+			outputsz += 4 + sizeof(UL_C) + 1 + sizeof(DEF_C) + sizeof(B_C);
+			output = realloc(output, outputsz);
+			strcat(output, CBOLD UL_C);
+			strncat(output, &C, 1);
+			strcat(output, DEF_C B_C);
 
 			break;
 		}
@@ -72,14 +93,20 @@ switch (C)
 		{
 			if (!(flags & IN))
 			{
+				outputsz += 4;
+				output = realloc(output, outputsz);
 				#ifdef I
-					printf("\x1b[3m");
+					strcat(output, "\x1b[3m");
 				#else
-					printf(CBOLD);
+					strcat(output, CBOLD);
 				#endif
 			}
 			else
-				printf(CRES DEF_C B_C);
+			{
+				outputsz += 4 + sizeof(DEF_C) + sizeof(B_C);
+				output = realloc(output, outputsz);
+				strcat(output, CRES DEF_C B_C);
+			}
 
 			flags ^= IN;
 
@@ -96,16 +123,16 @@ switch (C)
 
 			if ((flags & SKIP))
 			{
-				currentFG = realloc(currentFG, sizeof(HL_C) * sizeof(char));
-				currentBG = realloc(currentBG, sizeof(HLB_C) * sizeof(char));
-			
+				currentFG = realloc(currentFG, (sizeof(HL_C)+1) * sizeof(char));
+				currentBG = realloc(currentBG, (sizeof(HLB_C)+1) * sizeof(char));
+
 				strcpy(currentFG, HL_C);
 				strcpy(currentBG, HLB_C);
 			}
 			else
 			{
-				currentFG = realloc(currentFG, sizeof(DEF_C) * sizeof(char));
-				currentBG = realloc(currentBG, sizeof(B_C) * sizeof(char));
+				currentFG = realloc(currentFG, (sizeof(DEF_C)+1) * sizeof(char));
+				currentBG = realloc(currentBG, (sizeof(B_C)+1) * sizeof(char));
 			
 				strcpy(currentFG, DEF_C);
 				strcpy(currentBG, B_C);
@@ -117,11 +144,15 @@ switch (C)
 
 		if (!(flags & TICK))
 		{
-			printf(HLB_C HL_C "`");
+			outputsz += sizeof(HLB_C) + sizeof(HL_C) + 1;
+			output = realloc(output, outputsz);
+			strcat(output, HLB_C HL_C "`");
 		}
 		else
 		{
-			printf("`" CRES DEF_C B_C);
+			outputsz += sizeof(DEF_C) + sizeof(B_C) + 1 + 4;
+			output = realloc(output, outputsz);
+			strcat(output, "`" CRES DEF_C B_C);
 		}
 
 		if (flags & SKIP)
@@ -140,7 +171,9 @@ switch (C)
 			!(flags & SKIP)
 		)
 		{
-			printf(CLU_C "[");
+			outputsz += sizeof(CLU_C) + 1;
+			output = realloc(output, outputsz);
+			strcat(output, CLU_C "[");
 
 			flags |= LIST;
 
@@ -157,8 +190,10 @@ switch (C)
 			!(flags & SKIP)
 		)
 		{
-			printf(CLU_C "]" CRES DEF_C B_C);
-		
+			outputsz += sizeof(CLU_C) + 1 + 4 + sizeof(DEF_C) + sizeof(B_C);
+			output = realloc(output, outputsz);
+			strcat(output, CLU_C "]" CRES DEF_C B_C);
+
 			flags &= ~LIST;
 
 			break;
@@ -176,7 +211,10 @@ switch (C)
 			!(flags & SKIP)
 		)
 		{
-			printf(CLC_C "%c", C);
+			outputsz += 1 + sizeof(CLC_C);
+			output = realloc(output, outputsz);
+			strcat(output, CLC_C);
+			strncat(output, &C, 1);
 
 			break;
 		}
@@ -189,7 +227,13 @@ switch (C)
 			hcount ^= hcount;
 		}
 
-		printf("%s%s\n", currentFG, currentBG);
+		outputsz += 1 + 4 + strlen(currentFG) + strlen(currentBG);
+		output = realloc(output, outputsz);
+		strcat(output, CRES);
+		strcat(output, currentFG);
+		strcat(output, currentBG);
+		strcat(output, "\n");
+
 		flags |= NEWLINE;
 
 		break;
@@ -201,7 +245,8 @@ switch (C)
 		flags &= ~NEWLINE;
 
 		dump:
-			printf("%c", C);
+			output = realloc(output, ++outputsz);
+			strncat(output, &C, 1);
 			break;
 }
 		
