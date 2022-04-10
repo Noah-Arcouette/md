@@ -53,10 +53,10 @@ For more info about `Styling` read the `./doc/Styles.md` file.
 
 BinUtils - Usually preinstall on Linux
 
+[LibAdvo](https://github.com/Noah-Arcouette/advo
+)
 ***Optional***
-To remove ADVO comment out `#define ADVO` in selected style
-
-[LibAdvo](https://github.com/Noah-Arcouette/advo)
+To remove ADVO comment out `#define ADVO` and `#include <advo.h>` in selected style, or use `style`-noadvo.h instead
 
 
 # Install
