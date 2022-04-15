@@ -91,31 +91,34 @@ Settings* gset (const int argc, const char** argv)
 		}
 	}
 
-	char* output = malloc(
-		sizeof("FILE:  ") + strlen(s->input) + 1 +
-		sizeof("STYLE: ") + sizeof(NAME) +
-		sizeof(" By: ") + sizeof(BY) + 1
-		);
-	strcpy(output, "FILE:  ");
-	strcat(output, s->input);
-	strcat(output, "\n");
-	strcat(output, "STYLE: " NAME " By: " BY "\n");
+	if (!s->error)
+	{
+		char* output = malloc(
+			sizeof("FILE:  ") + strlen(s->input) + 1 +
+			sizeof("STYLE: ") + sizeof(NAME) +
+			sizeof(" By: ") + sizeof(BY) + 1
+			);
+		strcpy(output, "FILE:  ");
+		strcat(output, s->input);
+		strcat(output, "\n");
+		strcat(output, "STYLE: " NAME " By: " BY "\n");
 
-	#ifdef ADVO
-		struct Color box  = BOXC;
-		struct Color text = TEXTC;
+		#ifdef ADVO
+			struct Color box  = BOXC;
+			struct Color text = TEXTC;
 
-		printf(B_C);
+			printf(B_C);
 
 
-		#ifdef BOX_TYPE_CIR
-			cirText(output, box, text);
-		#elif defined BOX_TYPE_SBOX
-			sboxText(output, box, text);
-		#elif defined BOX_TYPE_BOX
-			boxText(output, box, text);
+			#ifdef BOX_TYPE_CIR
+				cirText(output, box, text);
+			#elif defined BOX_TYPE_SBOX
+				sboxText(output, box, text);
+			#elif defined BOX_TYPE_BOX
+				boxText(output, box, text);
+			#endif
 		#endif
-	#endif
+	}
 
 	return s;
 }
