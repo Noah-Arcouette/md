@@ -230,9 +230,9 @@ switch (C)
 		outputsz += 1 + 4 + strlen(currentFG) + strlen(currentBG);
 		output = realloc(output, outputsz);
 		strcat(output, CRES);
-		strcat(output, currentFG);
 		strcat(output, currentBG);
 		strcat(output, "\n");
+		strcat(output, currentFG);
 
 		flags |= NEWLINE;
 
