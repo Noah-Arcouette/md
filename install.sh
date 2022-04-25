@@ -9,21 +9,21 @@ echo "5: TTY-Support ( Designed to work with TTY Session users )"
 
 printf "Please Pick a Style?(1) "
 
-read style_id 
+read -r style_id 
 
-if [ -z $style_id ] || [ $style_id = "1" ] 
+if [ -z "$style_id" ] || [ "$style_id" = "1" ] 
 then
 	Style=default
-elif [ $style_id = "2" ] 
+elif [ "$style_id" = "2" ] 
 then
 	Style=desert
-elif [ $style_id = "3" ] 
+elif [ "$style_id" = "3" ] 
 then
 	Style=doxy
-elif [ $style_id = "4" ] 
+elif [ "$style_id" = "4" ] 
 then
 	Style=moon
-elif [ $style_id = "5" ] 
+elif [ "$style_id" = "5" ] 
 then
 	Style=tty-support
 else
@@ -33,21 +33,21 @@ fi
 
 
 printf "\nDo you want to install Local or Global?[L G] "
-read scope
+read -r scope
 
-if [ -z $scope ] || [ $scope = "L" ] || [ $scope = "l" ]
+if [ -z "$scope" ] || [ "$scope" = "L" ] || [ "$scope" = "l" ]
 then
-	echo -e "\nRunning make and installing locally..."
+	printf "\nRunning make and installing locally...\n"
 	make mk
 	make build STYLE=$Style
 
-	echo -e "\nMD installed locally to ./bin/md man file ./md.1.gz"
-elif [ $scope = "G" ] || [ $scope = "g" ]
+	printf "\nMD installed locally to ./bin/md man file ./md.1.gz\n"
+elif [ "$scope" = "G" ] || [ "$scope" = "g" ]
 then
-	echo -e "\nRunning make and installing globally..."
+	printf "\nRunning make and installing globally...\n"
 	sudo make install STYLE=$Style
 
-	echo -e "\nMD installed globally to /usr/bin/md man file /usr/share/man/man1/md.1.gz document files /usr/doc/md/"
+	printf "\nMD installed globally to /usr/bin/md man file /usr/share/man/man1/md.1.gz document files /usr/doc/md/\n"
 else 
 	echo "Error: $scope is not an option"
 	exit 1
