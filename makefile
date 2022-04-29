@@ -1,5 +1,4 @@
-CC        = gcc -I./inc -Wall -Wextra -O0 -g
-CCBUILD   = gcc -I./inc -O2
+CC        = gcc -I./inc -Wall -Wextra -O2 -g
 OUT       = ./bin/md
 STYLE     = default
 STYLEFILE = ./styles/${STYLE}.h
@@ -11,14 +10,7 @@ style: ${STYLEFILE}
 	cp ${STYLEFILE} ./inc/style.h
 
 
-build: style
-	${CCBUILD} \
-	./src/main.c \
-	./src/reader.c \
-	./src/settings.c \
-	./src/printer.c \
-	-o ${OUT} -ladvo
-
+build: clean style ${OUT}
 	strip -s ${OUT}
 
 	gzip -k ./md.1
