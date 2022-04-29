@@ -10,7 +10,7 @@ style: ${STYLEFILE}
 	cp ${STYLEFILE} ./inc/style.h
 
 
-build: clean style ${OUT}
+build: style ${OUT}
 	strip -s ${OUT}
 
 	gzip -k ./md.1
