@@ -37,6 +37,10 @@
 #define INSTR       0b1000000
 #define BACKSLASH   0b10000000
 
+#define END     "\x1b[?25h\x1b[?47l"
+#define REFRESH "\x1b[2J\x1b[H"
+#define SETUP   "\x1b[?25l\x1b[?47h"
+
 #define C data[i]
 
 void printer (char* data)
@@ -68,12 +72,13 @@ void printer (char* data)
 	free(currentBG);
 	free(currentFG);
 
+	printf(SETUP);
 	printf(B_C);
+	printf(REFRESH);
 
 	#ifdef ADVO
 		struct Color box  = BOXC;
 		struct Color text = TEXTC;
-
 
 		#ifdef BOX_TYPE_CIR
 			cirNum(output, box, text);
@@ -87,6 +92,8 @@ void printer (char* data)
 	#else
 		printf(output);
 	#endif
+
+	printf(END);
 
 	free(output);
 }
