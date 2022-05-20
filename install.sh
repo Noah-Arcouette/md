@@ -1,4 +1,10 @@
-#!/bin/sh 
+#!/bin/sh
+
+printf "Cleaning previous builds.\n"
+
+make clean
+
+printf "Done.\n\n"
 
 echo "1: Default"
 echo "2: Desert"
@@ -10,32 +16,32 @@ echo "6: Wolf"
 
 printf "Please Pick a Style?(1) "
 
-read -r style_id 
+read -r style_id
 
-if [ -z "$style_id" ] || [ "$style_id" = "1" ] 
+if [ -z "$style_id" ] || [ "$style_id" = "1" ]
 then
 	Style=default
-	
-elif [ "$style_id" = "2" ] 
+
+elif [ "$style_id" = "2" ]
 then
 	Style=desert
-	
-elif [ "$style_id" = "3" ] 
+
+elif [ "$style_id" = "3" ]
 then
 	Style=doxy
-	
-elif [ "$style_id" = "4" ] 
+
+elif [ "$style_id" = "4" ]
 then
 	Style=moon
-	
-elif [ "$style_id" = "5" ] 
+
+elif [ "$style_id" = "5" ]
 then
 	Style=tty-support
-	
+
 elif [ "$style_id" = "6" ]
 then
 	Style=wolf
-	
+
 else
 	echo "Error: $style_id is not an option"
 	exit 1
@@ -51,14 +57,15 @@ then
 	make mk
 	make build STYLE=$Style
 
-	printf "\nMD installed locally to ./bin/md man file ./md.1.gz\n"
+	printf "\nMD installed locally to \`./bin/md\` man file \`./md.1.gz\`\n"
+	printf "\nWarning \`md -h\` and \`md -f\` might not work. \nRun \`sudo make docs\` to get ( Will add files to you system )\n"
 elif [ "$scope" = "G" ] || [ "$scope" = "g" ]
 then
 	printf "\nRunning make and installing globally...\n"
 	sudo make install STYLE=$Style
 
 	printf "\nMD installed globally to /usr/bin/md man file /usr/share/man/man1/md.1.gz document files /usr/doc/md/\n"
-else 
+else
 	echo "Error: $scope is not an option"
 	exit 1
 fi
