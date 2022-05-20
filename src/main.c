@@ -40,10 +40,6 @@ int main (const int argc, const char** argv)
 		system("color");
 	#endif
 
-	printf(SETUP);
-	printf(B_C);
-	printf(REFRESH);
-
 	Settings* s = gset(argc, argv);
 
 	if (!s->error)
