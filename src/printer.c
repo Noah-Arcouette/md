@@ -72,9 +72,7 @@ void printer (char* data)
 	free(currentBG);
 	free(currentFG);
 
-	printf(SETUP);
-	printf(B_C);
-	printf(REFRESH);
+	printf(SETUP B_C REFRESH);
 
 	#ifdef ADVO
 		struct Color box  = BOXC;
