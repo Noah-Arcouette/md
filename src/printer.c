@@ -37,10 +37,6 @@
 #define INSTR       0b1000000
 #define BACKSLASH   0b10000000
 
-#define END     "\x1b[?25h\x1b[?47l"
-#define REFRESH "\x1b[2J\x1b[H"
-#define SETUP   "\x1b[?25l\x1b[?47h"
-
 #define C data[i]
 
 void printer (char* data)
@@ -64,15 +60,13 @@ void printer (char* data)
 
 	for (register int i = 0; data[i]!='\0'; i++)
 	{
-		#include "syntax.c"		
-		
+		#include "syntax.c"
+
 		#include "md.c"
 	}
 
 	free(currentBG);
 	free(currentFG);
-
-	printf(SETUP B_C REFRESH);
 
 	#ifdef ADVO
 		struct Color box  = BOXC;
@@ -90,8 +84,6 @@ void printer (char* data)
 	#else
 		printf(output);
 	#endif
-
-	printf(END);
 
 	free(output);
 }

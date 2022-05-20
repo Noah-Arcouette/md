@@ -20,17 +20,17 @@ build: ./inc/style.h ${OUT}
 ${OUT}: ./obj/printer.o ./obj/main.o ./obj/settings.o ./obj/reader.o
 	${CC} ./obj/*.o -o ${OUT} -ladvo
 
-./obj/main.o: ./src/main.c 
-	${CC} -c ./src/main.c -o ./obj/main.o 
+./obj/main.o: ./src/main.c ./inc/style.h
+	${CC} -c ./src/main.c -o ./obj/main.o
 
 ./obj/settings.o: ./src/settings.c ./inc/style.h
-	${CC} -c ./src/settings.c -o ./obj/settings.o 
+	${CC} -c ./src/settings.c -o ./obj/settings.o
 
 ./obj/reader.o: ./src/reader.c ./inc/style.h
-	${CC} -c ./src/reader.c -o ./obj/reader.o 
+	${CC} -c ./src/reader.c -o ./obj/reader.o
 
 ./obj/printer.o: ./src/printer.c ./inc/style.h
-	${CC} -c ./src/printer.c -o ./obj/printer.o 
+	${CC} -c ./src/printer.c -o ./obj/printer.o
 
 
 mk:
@@ -57,3 +57,8 @@ uninstall:
 
 clean:
 	rm -f ./obj/* ./bin/* ./inc/style.h *.gz
+
+docs:
+	mkdir -p "/usr/doc/md/"
+	cp ./doc/* /usr/doc/md/
+	cp ./face /usr/doc/md/face

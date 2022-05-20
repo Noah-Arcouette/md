@@ -93,6 +93,10 @@ Settings* gset (const int argc, const char** argv)
 
 	if (!s->error)
 	{
+		printf(SETUP);
+		printf(B_C);
+		printf(REFRESH);
+
 		char* output = malloc(
 			sizeof("FILE:  ") + strlen(s->input) + 1 +
 			sizeof("STYLE: ") + sizeof(NAME) +
