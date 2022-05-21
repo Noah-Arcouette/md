@@ -35,14 +35,8 @@ Settings* gset (const int argc, const char** argv)
 {
 	Settings* s = malloc(sizeof(Settings));
 	s->error = 0;
-
-	#ifndef _WIN32
-		s->input = malloc(11 * sizeof(char));
-		strcpy(s->input, "/dev/stdin");
-	#else
-		s->input = malloc(1 * sizeof(char));
-		s->input[0] = 0;
-	#endif
+	s->input = malloc(1 * sizeof(char));
+	s->input[0] = 0;
 
 	register uint8_t kill = 0;
 

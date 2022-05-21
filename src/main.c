@@ -32,6 +32,8 @@ void safeEnd (int)
 	exit(1);
 }
 
+#include <sys/poll.h>
+
 int main (const int argc, const char** argv)
 {
 	signal(SIGINT, safeEnd);
@@ -40,7 +42,19 @@ int main (const int argc, const char** argv)
 		system("color");
 	#endif
 
+	struct pollfd fds;
+  fds.fd = 0;
+  fds.events = POLLIN;
+
+  poll(&fds, 1, 0);
+
 	Settings* s = gset(argc, argv);
+
+	if (poll(&fds, 1, 0) == 1)
+	{
+		s->input = realloc(s->input, 11 * sizeof(char));
+		strcpy(s->input, "/dev/stdin");
+	}
 
 	if (!s->error)
 	{
