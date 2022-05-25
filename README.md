@@ -1,4 +1,4 @@
-# MD 
+# MD
 
 MD is a MakeDown file reader with:
 - [x] Header styles
@@ -17,19 +17,13 @@ MD is a MakeDown file reader with:
 
 # Exp
 
-## Moon - test.md
+![Wolf-Top](/images/wolf-top.png)
 
-![Moon-Top](/images/moon-top.png)
-
-![Moon-Bottom](/images/moon-bottom.png)
-
-## Doxy - README
-
-![doxy](/images/doxy.png)
+![Wolf-Bottom](/images/wolf-bottom.png)
 
 # Styles
 
-All styles are in the `./styles` directory. 
+All styles are in the `./styles` directory.
 You can set the `STYLE` variable in make for file name I.E
 ```
 $ sudo make install STYLE=default
@@ -112,7 +106,7 @@ Should display the help message.
 
 # See Also
 
-## Styles 
+## Styles
 
 doxy, and desert are taken from https://github.com/googlearchive/code-prettify
 
