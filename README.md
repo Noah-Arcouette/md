@@ -1,4 +1,4 @@
-**Updated version [here](https://github.com/Noah-Arcouette/imd)***
+**Updated version [here](https://github.com/Noah-Arcouette/imd)**
 
 # MD
 
